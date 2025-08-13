@@ -85,7 +85,7 @@ Visit our [Storybook documentation](./storybook-static/index.html) to explore al
 ### Setup
 ```bash
 # Clone the repository
-git clone https://github.com/PlumHQ/design-system-test.git
+git clone https://github.com/AdityaPlum/design-system.git
 cd design-system-test
 
 # Install dependencies

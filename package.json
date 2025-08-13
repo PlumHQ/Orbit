@@ -7,11 +7,11 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PlumHQ/design-system.git"
+    "url": "https://github.com/AdityaPlum/design-system.git"
   },
-  "homepage": "https://github.com/PlumHQ/design-system#readme",
+  "homepage": "https://github.com/AdityaPlum/design-system#readme",
   "bugs": {
-    "url": "https://github.com/PlumHQ/design-system/issues"
+    "url": "https://github.com/AdityaPlum/design-system/issues"
   },
   "author": "Plum Team <contact@plumhq.com>",
   "keywords": [
