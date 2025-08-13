@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* PRIMITIVES - COLORS */
+    --color-plumRed-50: #fef3f2ff;
+    --color-plumRed-100: #fee5e5ff;
+    --color-plumRed-200: #fccfd1ff;
+    --color-plumRed-300: #faa7acff;
+    --color-plumRed-400: #f6767fff;
+    --color-plumRed-500: #ee4f5eff;
+    --color-plumRed-600: #da243eff;
+    --color-plumRed-700: #b71933ff;
+    --color-plumRed-800: #9a1731ff;
+    --color-plumRed-900: #841731ff;
+    --color-plumRed-950: #490815ff;
+    --color-plumRed-a50: #ee4f5e17;
+    --color-plumRed-a100: #ee4f5e2e;
+    --color-plumRed-a150: #ee4f5e3d;
+    --color-plumRed-a200: #ee4f5e52;
+
+    --color-brandPurple-50: #ddd0d9ff;
+    --color-brandPurple-100: #c7b1c0ff;
+    --color-brandPurple-200: #ab8aa0ff;
+    --color-brandPurple-300: #8f6380ff;
+    --color-brandPurple-400: #733c61ff;
+    --color-brandPurple-500: #571541ff;
+    --color-brandPurple-600: #491236ff;
+    --color-brandPurple-700: #3a0e2bff;
+    --color-brandPurple-800: #2c0b21ff;
+    --color-brandPurple-900: #1d0716ff;
+    --color-brandPurple-950: #11040dff;
+
+    --color-black-500: #000000ff;
+    --color-black-a10: #00000017;
+    --color-black-a25: #0000001f;
+    --color-black-a50: #0000002e;
+    --color-black-a100: #00000052;
+    --color-black-a200: #0000008f;
+    --color-black-a300: #000000b8;
+    --color-black-a400: #000000cc;
+    --color-black-a450: #000000e0;
+
+    --color-blue-50: #eff6ffff;
+    --color-blue-100: #dbeafeff;
+    --color-blue-a150: #1d4ed83d;
+    --color-blue-200: #bfdbfeff;
+    --color-blue-300: #93c5fdff;
+    --color-blue-400: #60a5faff;
+    --color-blue-500: #3b82f6ff;
+    --color-blue-600: #2563ebff;
+    --color-blue-700: #1d4ed8ff;
+    --color-blue-800: #1e40afff;
+    --color-blue-900: #1e3a8aff;
+    --color-blue-950: #172554ff;
+
+    --color-white-500: #ffffffff;
+    --color-white-transparent: #ffffff00;
+    --color-white-a10: #ffffff17;
+    --color-white-a25: #ffffff1f;
+    --color-white-a50: #ffffff2e;
+    --color-white-a100: #ffffff52;
+    --color-white-a200: #ffffff7a;
+    --color-white-a300: #ffffffa3;
+    --color-white-a400: #ffffffcc;
+    --color-white-a450: #ffffffe0;
+
+    --color-red-50: #fef2f2ff;
+    --color-red-100: #fee2e2ff;
+    --color-red-200: #fecacaff;
+    --color-red-300: #fca5a5ff;
+    --color-red-400: #f87171ff;
+    --color-red-500: #ef4444ff;
+    --color-red-600: #dc2626ff;
+    --color-red-700: #b91c1cff;
+    --color-red-800: #991b1bff;
+    --color-red-900: #7f1d1dff;
+    --color-red-950: #450a0aff;
+    --color-red-a50: #dc262617;
+    --color-red-a100: #dc26262e;
+    --color-red-a150: #dc26263d;
+    --color-red-a200: #dc262652;
+
+    --color-green-50: #f0fdf4ff;
+    --color-green-100: #dcfce7ff;
+    --color-green-200: #bbf7d0ff;
+    --color-green-300: #86efacff;
+    --color-green-400: #4ade80ff;
+    --color-green-500: #22c55eff;
+    --color-green-600: #16a34aff;
+    --color-green-700: #15803dff;
+    --color-green-800: #166534ff;
+    --color-green-900: #14532dff;
+    --color-green-950: #052e16ff;
+
+    --color-gray-50: #f2f4f7ff;
+    --color-gray-100: #eaedf1ff;
+    --color-gray-200: #e1e5ebff;
+    --color-gray-300: #c5ccd6ff;
+    --color-gray-400: #8c98abff;
+    --color-gray-500: #55657dff;
+    --color-gray-600: #2d3d54ff;
+    --color-gray-700: #203248ff;
+    --color-gray-800: #182639ff;
+    --color-gray-900: #000a26ff;
+    --color-gray-950: #111419ff;
+    --color-gray-a25: #2d3d540f;
+    --color-gray-a50: #2d3d5417;
+    --color-gray-a75: #2d3d541f;
+    --color-gray-a100: #2d3d542e;
+    --color-gray-a150: #2d3d543d;
+    --color-gray-a200: #2d3d5452;
+    --color-gray-a400: #2d3d54a3;
+
+    --color-beige-50: #f9f8f6ff;
+    --color-beige-100: #f2f0edff;
+    --color-beige-200: #ece9e5ff;
+    --color-beige-300: #e5e1dcff;
+    --color-beige-400: #dbd6ceff;
+    --color-beige-500: #ccc4baff;
+    --color-beige-600: #b6aea3ff;
+    --color-beige-700: #928b82ff;
+    --color-beige-800: #5b5752ff;
+    --color-beige-900: #4a4642ff;
+    --color-beige-950: #3f3a36ff;
+    --color-beige-a50: #928b8217;
+    --color-beige-a100: #928b822e;
+    --color-beige-a150: #928b823d;
+    --color-beige-a200: #928b8252;
+
+    --color-yellow-50: #fff9edff;
+    --color-yellow-100: #fff2d5ff;
+    --color-yellow-200: #ffde9eff;
+    --color-yellow-300: #ffcb72ff;
+    --color-yellow-400: #fdaa3aff;
+    --color-yellow-500: #fc9013ff;
+    --color-yellow-600: #ed7309ff;
+    --color-yellow-700: #c4570aff;
+    --color-yellow-800: #9c4410ff;
+    --color-yellow-900: #7d3911ff;
+    --color-yellow-950: #441c06ff;
+
+    --color-peach-50: #fef8eeff;
+    --color-peach-100: #fdf0d7ff;
+    --color-peach-200: #fdf0d7ff;
+    --color-peach-300: #f5c37cff;
+    --color-peach-400: #f0a047ff;
+    --color-peach-500: #ec8523ff;
+    --color-peach-600: #de6b18ff;
+    --color-peach-700: #de6b18ff;
+    --color-peach-800: #934119ff;
+    --color-peach-900: #934119ff;
+    --color-peach-950: #401a0aff;
+
+    --color-teal-50: #ebfefaff;
+    --color-teal-100: #bff3eaff;
+    --color-teal-200: #98e4d9ff;
+    --color-teal-300: #73cec5ff;
+    --color-teal-400: #5cb0abff;
+    --color-teal-500: #4e9594ff;
+    --color-teal-600: #41797aff;
+    --color-teal-700: #355d60ff;
+    --color-teal-800: #2d4d51ff;
+    --color-teal-900: #253f43ff;
+  
+    /* PRIMITIVES - RADIUS */
+    --radius-none: 0px;
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --radius-full: 9999px;
+
+    /* PLUM - RADIUS */
+    --radius-0: 0px;
+    --radius-05: 2px;
+    --radius-1: 4px;
+    --radius-15: 6px;
+    --radius-2: 8px;
+    --radius-25: 10px;
+    --radius-3: 12px;
+    --radius-4: 16px;
+    --radius-6: 24px;
+    --radius-8: 9999px;
+  
+    /* TYPOGRAPHY */
+    --font-family-primary: 'Inter';
+    --font-family-secondary: 'Chromatica';
+  
+    --font-size-xs: 12px;
+    --line-height-xs: 16px;
+
+    --font-size-sm: 14px;
+    --line-height-sm: 20px;
+
+    --font-size-base: 16px;
+    --line-height-base: 24px;
+
+    --font-size-lg: 18px;
+    --line-height-lg: 28px;
+
+    --font-size-xl: 20px;
+    --line-height-xl: 28px;
+
+    --font-size-2xl: 24px;
+    --line-height-2xl: 32px;
+
+    --font-size-3xl: 32px;
+    --line-height-3xl: 40px;
+
+    --font-size-4xl: 40px;
+    --line-height-4xl: 52px;
+  
+    /* SPACING */
+    --spacing-1: 4px;
+    --spacing-2: 8px;
+    --spacing-3: 12px;
+    --spacing-4: 16px;
+    --spacing-5: 20px;
+    --spacing-6: 24px;
+    --spacing-8: 32px;
+    --spacing-10: 40px;
+    --spacing-12: 48px;
+    --spacing-16: 64px;
+  }
+  
