@@ -5,7 +5,7 @@ import {
   TooltipContent,
   Tooltip,
 } from './component';
-import { Button } from '@pluminsurance/design-system-test.button';
+import { Button } from '../button';
 
 export function TopTooltipDemo() {
   return (

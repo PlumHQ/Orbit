@@ -1,7 +1,7 @@
 import React from 'react';
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerTrigger, DrawerClose } from './component';
-import { Button } from '@pluminsurance/design-system-test.button';
-import { DownloadIcon } from '@pluminsurance/design-system-test.icons';
+import { Button } from '../button';
+import { DownloadIcon } from '../icons';
 // import { BarChart, Bar, ResponsiveContainer } from 'recharts';
 const data = [
     {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Input } from '@pluminsurance/design-system-test.input';
-import { SearchIcon } from '@pluminsurance/design-system-test.icons';
+import { Input } from '../input';
+import { SearchIcon } from '../icons';
 import { TInputSearchStyleVariants, TInputSearchVariant } from './types';
-import { LinkButton } from '@pluminsurance/design-system-test.link-button';
-import { IconButton } from '@pluminsurance/design-system-test.icon-button';
+import { LinkButton } from '../linkButton';
+import { IconButton } from '../iconButton';
 import '@fontsource/inter';
 
 export interface IInputSearch {

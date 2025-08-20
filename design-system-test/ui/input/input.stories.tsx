@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Input } from './index';
-import { SearchIcon, CrossCloseIcon, InfoIcon } from '@pluminsurance/design-system-test.icons';
+import { SearchIcon, CrossCloseIcon, InfoIcon } from '../icons';
 
 const meta: Meta<typeof Input> = {
   title: 'Design System/Input',

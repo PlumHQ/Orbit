@@ -1,5 +1,5 @@
 import React from 'react';
-import '@pluminsurance/design-system-test.styles';
+import '../../styles/output.css';
 import { sizeMap } from './utils';
 
 interface LeftArrowIconProps extends React.SVGProps<SVGSVGElement> {

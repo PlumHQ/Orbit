@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, DialogBody } from './index';
-import { Button } from '@pluminsurance/design-system-test.button';
-import { Card } from '@pluminsurance/design-system-test.cards';
-import { CrossCloseIcon } from '@pluminsurance/design-system-test.icons';
-import { Skeleton } from '@pluminsurance/design-system-test.skeleton';
+import { Button } from '../button';
+import { Card } from '../cards';
+import { CrossCloseIcon } from '../icons';
+import { Skeleton } from '../skeleton';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Design System/Modal',

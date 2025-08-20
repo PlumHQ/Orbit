@@ -3,7 +3,7 @@ import { Chip } from './component';
 import {
   ChevronDown,
   FilterIcon,
-} from '@pluminsurance/design-system-test.icons';
+} from '../icons';
 
 export const MediumGrayIconsChip = () => {
   const [isSelected, setIsSelected] = React.useState(false);

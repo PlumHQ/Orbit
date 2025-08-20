@@ -1,8 +1,8 @@
 import React from 'react';
 import { TDividerStroke, TDividerStyle, TDividerVariant } from './types';
 import { cva } from 'class-variance-authority';
-import '@pluminsurance/design-system-test.styles';
-import { cn } from '@pluminsurance/design-system-test.utilities';
+import '../../styles/output.css';
+import { cn } from '../utilities';
 
 export interface IDivider {
   stroke: TDividerStroke;

@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
-import { LoadingIcon } from '@pluminsurance/design-system-test.icons';
-import '@pluminsurance/design-system-test.styles';
+import { LoadingIcon } from '../icons';
+import '../../styles/output.css';
 import { IButtonSizes, IButtonStyleVariants, IButtonVariants } from './types';
-import { cn } from '@pluminsurance/design-system-test.utilities';
+import { cn } from '../utilities';
 import '@fontsource/inter';
 
 export interface IButton {

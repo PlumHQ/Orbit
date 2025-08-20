@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '.';
-import { HeartIcon } from '@pluminsurance/design-system-test.icons'
+import { HeartIcon } from '../icons'
 
 export const HorizontalGrayTabs = () => {
     const [selectedValue, setSelectedValue] = React.useState("1");

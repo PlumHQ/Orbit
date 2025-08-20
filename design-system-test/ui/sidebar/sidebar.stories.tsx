@@ -1,4 +1,4 @@
-import { CommandKeyIcon, LeftChevronIcon } from "@pluminsurance/design-system-test.icons"
+  import { CommandKeyIcon, EndorsementsIcon, FileText, GraduationCapIcon, HomeIcon, IndianRupee, LeftChevronIcon, MessageQuestionIcon, SettingsIcon, StarIcon, UserIcon } from "../icons"
 import React from "react";
 import {
   Sidebar,
@@ -15,11 +15,14 @@ import {
   SidebarMenuSub,
   SidebarMenuSubItem,
   SidebarMenuSubButton,
+  SidebarFooter,
 } from "."
 import { Meta, StoryObj } from "@storybook/react";
+import { ExpandedSidedLogo, CollapsedSidedLogo } from "../illustrations";
+import { Avatar } from "../avatar";
 
 const meta: Meta<typeof Sidebar> = {
-  title: "Sidebar",
+  title: "Design System/Sidebar",
   component: Sidebar,
   tags: ["autodocs"],
   argTypes: {
@@ -44,60 +47,115 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: () => CommandKeyIcon,
-    children: [
-      {
-        title: "Home Sub Item",
-        url: "#",
-        icon: () => CommandKeyIcon,
-      },
-    ],
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: () => CommandKeyIcon,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: () => CommandKeyIcon,
-    children: [
-      {
-        title: "Calendar Sub Item",
-        url: "#",
-        icon: () => CommandKeyIcon,
-      },
-    ],
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: () => CommandKeyIcon,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: () => CommandKeyIcon,
-  },
-]
+
+
+
 
 function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const [items, setItems] = React.useState<SidebarMenuItem[]>([
+    {
+      title: "Home",
+      url: "#",
+      icon: () => HomeIcon,
+      counter: 3,
+    },
+    {
+      title: "Employees",
+      url: "#",
+      icon: () => UserIcon,
+    },
+    {
+      title: "Benefits",
+      url: "#",
+      icon: () => StarIcon,
+      expanded: true,
+      children: [
+        {
+          title: "Benefits",
+          url: "#",
+        },
+        {
+          title: "Groups",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "CD Accounts",
+      url: "#",
+      icon: () => IndianRupee,
+    },
+    {
+      title: "Endorsements",
+      url: "#",
+      icon: () => EndorsementsIcon,
+    },
+    {
+      title: "Claims",
+      url: "#",
+      icon: () => FileText,
+    },
+  ])
+  const [footerItems, setFooterItems] = React.useState<SidebarMenuItem[]>([
+    {
+      title: "Resource Hub",
+      url: "#",
+      icon: () => GraduationCapIcon,
+      onClick: () => {
+        console.log("Resource Hub");
+      }
+    },
+    {
+      title: "Settings",
+      url: "#",
+      icon: () => SettingsIcon,
+      onClick: () => {
+        console.log("Settings");
+      }
+    },
+    {
+      title: "Help & Support",
+      url: "#",
+      icon: () => MessageQuestionIcon,
+      onClick: () => {
+        console.log("Help & Support");
+      }
+    },
+    {
+      title: "Aditya Singh",
+      url: "#",
+      icon: () => {
+        const AvatarComponent: React.FC = () => (
+          <Avatar
+            variant="initials"
+            size="small"
+            src="https://via.placeholder.com/150"
+            fallback="AS"
+            alt="Aditya Singh"
+            onClick={() => {}}
+          />
+        );
+        return AvatarComponent;
+      },
+      onClick: () => {
+        console.log("Aditya Singh");
+      }
+    }
+  ])
   return (
     <Sidebar {...props}>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel expandedIllustration={ExpandedSidedLogo} collapsedIllustration={CollapsedSidedLogo} />
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {items.map((item: SidebarMenuItem) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton item={item} asChild />
-                  {item.children && <SidebarMenuSub>
+                  <SidebarMenuButton item={item}  isActive={false} asChild onClick={() => {
+                    setItems(items.map((i) => ({...i, expanded: i.title === item.title ? !i.expanded : i.expanded})))
+                    item.onClick && item.onClick();
+                  }} tooltip={item.title} />
+                  {item.children && item.expanded && <SidebarMenuSub>
                     {item.children.map((child) => (
                       <SidebarMenuSubItem key={child.title}>
                         <SidebarMenuSubButton item={child} />
@@ -109,6 +167,25 @@ function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
+          <SidebarFooter>
+            <SidebarGroupContent>
+            <SidebarMenu>
+              {footerItems.map((item: SidebarMenuItem) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton item={item} tooltip={item.title} asChild />
+                  {item.children && <SidebarMenuSub>
+                    {item.children.map((child) => (
+                      <SidebarMenuSubItem key={child.title}>
+                        <SidebarMenuSubButton item={child} />
+                      </SidebarMenuSubItem>
+                    ))}
+                  </SidebarMenuSub>
+                  }
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarFooter>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
@@ -123,18 +200,7 @@ export const Default: Story = {
     <SidebarProvider defaultOpen={true} open={open} onOpenChange={setOpen}>
       <AppSidebar {...args} />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-          <SidebarTrigger variant="tertiary" styleVariant="beige" size="medium" iconOnly={true} leadingIcon={LeftChevronIcon} label="Toggle Sidebar" />
-          <h1 className="text-lg font-semibold">Dashboard</h1>
-        </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-gray-100 aspect-video rounded-xl" />
-            <div className="bg-gray-100 aspect-video rounded-xl" />
-            <div className="bg-gray-100 aspect-video rounded-xl" />
-          </div>
-          <div className="bg-gray-100 min-h-[300px] flex-1 rounded-xl" />
-        </div>
+        <SidebarTrigger variant="tertiary" styleVariant="beige" size="medium" iconOnly={true} leadingIcon={LeftChevronIcon} label="Toggle Sidebar" />
       </SidebarInset>
     </SidebarProvider>
   )},

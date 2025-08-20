@@ -9,10 +9,10 @@ import {
   CommandKeyIcon,
   SquareCheckIcon,
   SquareIcon,
-} from '@pluminsurance/design-system-test.icons';
-import { cn } from '@pluminsurance/design-system-test.utilities';
+} from '../icons';
+import { cn } from '../utilities';
 import '@fontsource/inter';
-import { Divider } from '@pluminsurance/design-system-test.divider';
+import { Divider } from '../divider';
 
 function DropdownMenu({
   ...props

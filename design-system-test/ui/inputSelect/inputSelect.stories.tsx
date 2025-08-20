@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { InputSelect } from './component';
-import { UserIcon, SearchIcon, InfoIcon } from '@pluminsurance/design-system-test.icons';
+import { UserIcon, SearchIcon, InfoIcon } from '../icons';
 
 const meta: Meta<typeof InputSelect> = {
-    title: 'Components/InputSelect',
+    title: 'Design System/InputSelect',
     component: InputSelect,
     parameters: {
         layout: 'centered',

@@ -2,8 +2,8 @@ import React from 'react';
 import { TChipSizeVariant, TChipStyleVariant } from './types';
 import { cva } from 'class-variance-authority';
 import '@fontsource/inter';
-import { Counter } from '@pluminsurance/design-system-test.counter';
-import { cn } from '@pluminsurance/design-system-test.utilities';
+import { Counter } from '../counter';
+import { cn } from '../utilities';
 
 export interface IChip {
   styleVariant: TChipStyleVariant;

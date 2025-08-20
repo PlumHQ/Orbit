@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 import React from 'react';
 import { IFloatingButtonSizes, IFloatingButtonStyles } from './types';
-import { cn } from '@pluminsurance/design-system-test.utilities';
+import { cn } from '../utilities';
 import '@fontsource/inter';
 
 export interface IFloatingButton {

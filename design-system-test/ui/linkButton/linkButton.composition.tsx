@@ -3,7 +3,7 @@ import { LinkButton } from './component';
 import {
   DownloadIcon,
   RightArrowIcon,
-} from '@pluminsurance/design-system-test.icons';
+} from '../icons';
 
 export const LargePrimaryButton = () => {
   return (

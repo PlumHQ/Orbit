@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import '@pluminsurance/design-system-test.styles';
+import '../../styles/output.css';
 import { clsx } from 'clsx';
 import '@fontsource/inter';
 import { TAvatarSizes, TAvatarVariants } from './types';

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ILinkButtonSizes, ILinkButtonStates } from './types';
 import { cva } from 'class-variance-authority';
-import { cn } from '@pluminsurance/design-system-test.utilities';
-import '@pluminsurance/design-system-test.styles'
+import { cn } from '../utilities';
+import '../../styles'
 import '@fontsource/inter';
 
 export interface ILinkButton {

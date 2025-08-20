@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { LinkButton } from '@pluminsurance/design-system-test.link-button';
+import { LinkButton } from '../linkButton';
 import { TInputSizes } from './types';
 import {
   ErrorIndicationIcon,
   InfoIcon,
   SuccessIndicationIcon,
-} from '@pluminsurance/design-system-test.icons';
-import { IconButton } from '@pluminsurance/design-system-test.icon-button';
-import { CommandKeyIcon } from '@pluminsurance/design-system-test.icons';
+} from '../icons';
+import { IconButton } from '../iconButton';
+import { CommandKeyIcon } from '../icons';
 import '@fontsource/inter';
 
 export interface IInput {

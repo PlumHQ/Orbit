@@ -3,14 +3,14 @@
 import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 
-import { cn } from '@pluminsurance/design-system-test.utilities';
-import { CrossCloseIcon } from '@pluminsurance/design-system-test.icons';
-import '@pluminsurance/design-system-test.styles';
+import { cn } from '../utilities';
+import { CrossCloseIcon } from '../icons';
+import '../../styles/output.css';
 import '@fontsource/inter';
-import { Button } from "@pluminsurance/design-system-test.button";
+import { Button } from "../button";
 import { ButtonGroupAlignment, ButtonGroupOrientation, ButtonGroupStyle } from "./types";
-import { Checkbox } from "@pluminsurance/design-system-test.checkbox";
-import { IconButton } from "@pluminsurance/design-system-test.icon-button";
+import { Checkbox } from "../checkbox";
+import { IconButton } from "../iconButton";
 import '@fontsource/inter';
 
 // Context for modal props

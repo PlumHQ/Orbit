@@ -3,7 +3,7 @@ import { Button } from './component.js';
 import {
   DownloadIcon,
   RightArrowIcon,
-} from '@pluminsurance/design-system-test.icons';
+} from '../icons';
 
 // Primary Buttons
 export const DefaultPrimaryButton = () => {

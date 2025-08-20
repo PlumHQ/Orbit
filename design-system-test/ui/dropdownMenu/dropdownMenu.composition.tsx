@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@pluminsurance/design-system-test.button';
+import { Button } from '../button';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -17,7 +17,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '.';
-import { HeartIcon, TrashIcon, UserIcon } from '@pluminsurance/design-system-test.icons';
+import { HeartIcon, TrashIcon, UserIcon } from '../icons';
 
 export function DropdownMenuDemo() {
   const [smsChecked, setSMSChecked] = React.useState(false);

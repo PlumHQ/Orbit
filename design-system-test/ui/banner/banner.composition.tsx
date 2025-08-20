@@ -1,7 +1,7 @@
 import React from 'react';
 import {Banner} from './index';
-import { RightArrowIcon } from '@pluminsurance/design-system-test.icons';
-import { HealthInsuraceIllustration, WalletIllustration } from '@pluminsurance/design-system-test.illustrations';
+import { RightArrowIcon } from '../icons';
+import { HealthInsuraceIllustration, WalletIllustration } from '../illustrations';
 
 export const ExpandedAssetPositiveTrailingIconBanner = () => {
     return (

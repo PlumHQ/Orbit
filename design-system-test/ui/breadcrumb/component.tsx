@@ -1,10 +1,10 @@
 import React,{ useState } from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { SlashIcon, EllipsisIcon, LeftArrowIcon } from "@pluminsurance/design-system-test.icons"
-import { cn } from "@pluminsurance/design-system-test.utilities"
-import '@pluminsurance/design-system-test.styles';
+import { SlashIcon, EllipsisIcon, LeftArrowIcon } from "../icons"
+import { cn } from "../utilities"
+import '../../styles/output.css';
 import '@fontsource/inter';
-import { Button } from "@pluminsurance/design-system-test.button";
+import { Button } from "../button";
 
 function BreadcrumbLinkList({ ...props }: React.ComponentProps<"nav">) {
   return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />

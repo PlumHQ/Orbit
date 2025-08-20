@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { LinkButton } from '@pluminsurance/design-system-test.link-button';
+import { LinkButton } from '../linkButton';
 import { TInputSelectSizes, ISelectOption } from './types';
 import {
   ChevronDownIcon,
@@ -7,7 +7,7 @@ import {
   InfoIcon,
   SearchIcon,
   SuccessIndicationIcon,
-} from '@pluminsurance/design-system-test.icons';
+} from '../icons';
 import '@fontsource/inter';
 
 export interface IInputSelect {

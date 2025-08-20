@@ -1,7 +1,7 @@
 import React from 'react';
 import { TLeafletSize, TLeafletStyle } from './types';
 import { cva } from 'class-variance-authority';
-import { cn } from '@pluminsurance/design-system-test.utilities';
+import { cn } from '../utilities';
 import '@fontsource/inter';
 
 

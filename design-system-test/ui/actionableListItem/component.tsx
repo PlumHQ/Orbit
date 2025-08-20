@@ -11,18 +11,18 @@ import {
   CircleDotIcon,
   CircleIcon,
   ChevronRight,
-} from '@pluminsurance/design-system-test.icons';
+} from '../icons';
 import { cva } from 'class-variance-authority';
-import { cn } from '@pluminsurance/design-system-test.utilities';
-import { Badge } from '@pluminsurance/design-system-test.badge';
-import { Leaflet } from '@pluminsurance/design-system-test.leaflet';
+import { cn } from '../utilities';
+import { Badge } from '../badge';
+import { Leaflet } from '../leaflet';
 import {
   TBadgeSizeVariants,
   TBadgeStyleVariants,
   TBadgeVariants,
-} from '@pluminsurance/design-system-test.badge';
+} from '../badge';
 import '@fontsource/inter';
-import { TLeafletStyle } from '@pluminsurance/design-system-test.leaflet';
+import { TLeafletStyle } from '../leaflet';
 
 export interface IActionableListItem {
   variant: TActionableListItemVariants;

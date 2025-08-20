@@ -1,9 +1,9 @@
 import * as React from "react";
-import { cn } from '@pluminsurance/design-system-test.utilities';
-import '@pluminsurance/design-system-test.styles';
+import { cn } from '../utilities';
+import '../../styles/output.css';
 import '@fontsource/inter';
 import { TProgressSize } from "./types";
-import { AlertFilledIcon, CircleCheckFilledIcon } from "@pluminsurance/design-system-test.icons";
+import { AlertFilledIcon, CircleCheckFilledIcon } from "../icons";
 
 
 export interface IProgress {

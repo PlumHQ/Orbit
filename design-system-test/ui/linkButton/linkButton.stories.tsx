@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { LinkButton, ILinkButton } from './index';
-import { InfoIcon, RightArrowIcon } from '@pluminsurance/design-system-test.icons';
+import { InfoIcon, RightArrowIcon } from '../icons';
 
 const meta: Meta<typeof LinkButton> = {
   title: 'Design System/LinkButton',

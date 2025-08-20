@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { cva } from 'class-variance-authority';
-import '@pluminsurance/design-system-test.styles';
+import '../../styles/output.css';
 import { TBadgeSizeVariants, TBadgeStyleVariants, TBadgeVariants } from './types';
 import '@fontsource/inter';
-import { cn } from '@pluminsurance/design-system-test.utilities';
+import { cn } from '../utilities';
 
 interface IconProps {
   size?: string;

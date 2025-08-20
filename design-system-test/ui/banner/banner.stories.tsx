@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Banner } from './index';
-import { DownloadIcon, InfoIcon, RightArrowIcon } from '@pluminsurance/design-system-test.icons';
-import { HealthInsuraceIllustration, WalletIllustration } from '@pluminsurance/design-system-test.illustrations';
+import { DownloadIcon, InfoIcon, RightArrowIcon } from '../icons';
+import { HealthInsuraceIllustration, WalletIllustration } from '../illustrations';
 
 const meta: Meta<typeof Banner> = {
   title: 'Design System/Banner',

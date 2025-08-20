@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Toast } from './index';
-import { InfoIcon } from '@pluminsurance/design-system-test.icons';
+import { InfoIcon } from '../icons';
 
 const meta: Meta<typeof Toast> = {
   title: 'Design System/Toast',

@@ -2,17 +2,17 @@
 
 import * as React from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import { Divider } from '@pluminsurance/design-system-test.divider';
-import { Button } from '@pluminsurance/design-system-test.button';
+import { Divider } from '../divider';
+import { Button } from '../button';
 import {
   CrossCloseIcon,
   InfoIcon,
-} from '@pluminsurance/design-system-test.icons';
-import '@pluminsurance/design-system-test.styles';
-import { IconButton } from '@pluminsurance/design-system-test.icon-button';
+} from '../icons';
+import '../../styles/output.css';
+import { IconButton } from '../iconButton';
 import { TToastStyleVariants } from './types';
 import '@fontsource/inter';
-import { IIconProps } from '@pluminsurance/design-system-test.icons';
+import { IIconProps } from '../icons';
 
 
 const toastVariants = cva(

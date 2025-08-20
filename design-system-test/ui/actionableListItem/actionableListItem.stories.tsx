@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { ActionableListItem } from './index';
-import { InfoIcon } from '@pluminsurance/design-system-test.icons';
-import { HealthInsuraceIllustration } from '@pluminsurance/design-system-test.illustrations';
+import { InfoIcon } from '../icons';
+import { HealthInsuraceIllustration } from '../illustrations';
 
 const meta: Meta<typeof ActionableListItem> = {
     title: 'Design System/ActionableListItem',

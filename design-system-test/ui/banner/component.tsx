@@ -7,14 +7,14 @@ import {
   ErrorIndicationFilledIcon,
   InfoIconFilled,
   CrossCloseIcon,
-} from '@pluminsurance/design-system-test.icons';
+} from '../icons';
 import '@fontsource/inter';
-import { Badge } from '@pluminsurance/design-system-test.badge';
-import { Button } from '@pluminsurance/design-system-test.button';
-import { IconButton } from '@pluminsurance/design-system-test.icon-button';
-import { LinkButton } from '@pluminsurance/design-system-test.link-button';
-import { IIconButtonColors } from '@pluminsurance/design-system-test.icon-button';
-import { ILinkButtonStates } from '@pluminsurance/design-system-test.link-button';
+import { Badge } from '../badge';
+import { Button } from '../button';
+import { IconButton } from '../iconButton';
+import { LinkButton } from '../linkButton';
+import { IIconButtonColors } from '../iconButton';
+import { ILinkButtonStates } from '../linkButton';
 
 export interface IBanner {
   styleVariant: IBannerStyleVariant;

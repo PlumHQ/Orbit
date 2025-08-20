@@ -3,9 +3,9 @@
 import * as React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
-import { cn } from '@pluminsurance/design-system-test.utilities';
-import { Button } from '@pluminsurance/design-system-test.button';
-import { IconButton } from '@pluminsurance/design-system-test.icon-button';
+import { cn } from '../utilities';
+import { Button } from '../button';
+import { IconButton } from '../iconButton';
 import {
   TTooltipAlignments,
   TTooltipPositions,
@@ -78,6 +78,7 @@ function TooltipContent({
   buttonLabel,
   onButtonClick,
   onClose,
+  hidden = false,
 }: TTooltipContentProps) {
   return (
     <TooltipPrimitive.Portal>
@@ -92,6 +93,7 @@ function TooltipContent({
           side={position}
           align={align}
           avoidCollisions={true}
+          hidden={hidden}
         >
           <div>
             <div
@@ -144,6 +146,7 @@ function TooltipContent({
           )}
           side={'top'}
           avoidCollisions={true}
+          hidden={hidden}
         >
           <div>{headerText}</div>
         </TooltipPrimitive.Content>

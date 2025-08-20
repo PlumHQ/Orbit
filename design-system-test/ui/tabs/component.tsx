@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
-import { cn } from '@pluminsurance/design-system-test.utilities';
-import { Counter } from '@pluminsurance/design-system-test.counter';
-import { ListTreeIcon } from '@pluminsurance/design-system-test.icons';
+import { cn } from '../utilities';
+import { Counter } from '../counter';
+import { ListTreeIcon } from '../icons';
 
 interface TabsProps extends React.ComponentProps<typeof TabsPrimitive.Root> {
   onValueChange?: (value: string) => void;

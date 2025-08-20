@@ -1,6 +1,6 @@
 import React from 'react';
 import { Leaflet } from './component';
-import { InfoIcon, RightArrowIcon } from '@pluminsurance/design-system-test.icons';
+import { InfoIcon, RightArrowIcon } from '../icons';
 
 export const LargePositiveLeaflet = () => {
     return (

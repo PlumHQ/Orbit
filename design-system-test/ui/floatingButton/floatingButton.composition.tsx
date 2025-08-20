@@ -1,6 +1,6 @@
 import React from 'react';
 import { FloatingButton } from './component';
-import { RoundedAddIcon } from '@pluminsurance/design-system-test.icons';
+import { RoundedAddIcon } from '../icons';
 
 export const WhiteLargeFloatingButton = () => {
     return (

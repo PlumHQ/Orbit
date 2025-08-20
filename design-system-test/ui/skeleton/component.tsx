@@ -1,7 +1,7 @@
 import * as React from "react"
-import { cn } from '@pluminsurance/design-system-test.utilities';
+import { cn } from '../utilities';
 import { TSkeletonShape } from "./types";
-import '@pluminsurance/design-system-test.styles';
+import '../../styles/output.css';
 import '@fontsource/inter';
 
 export interface ISkeleton {

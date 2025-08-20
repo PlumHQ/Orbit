@@ -3,26 +3,26 @@
 import * as React from "react"
 import { Drawer as DrawerPrimitive } from "vaul"
 
-import { cn } from "@pluminsurance/design-system-test.utilities"
-import { Button } from "@pluminsurance/design-system-test.button"
+import { cn } from "../utilities"
+import { Button } from "../button"
 import { DrawerType, SideDrawerStyle } from "./types"
 import { Dialog } from "@radix-ui/react-dialog"
-import { CrossCloseIcon, LeftChevronIcon, ChevronRight, InfoIcon, AlertFilledIcon, RightArrowIcon, CircleCheckFilledIcon, AlertIcon } from "@pluminsurance/design-system-test.icons"
-import { Divider } from "@pluminsurance/design-system-test.divider"
-import { ILinkButtonStates, LinkButton } from "@pluminsurance/design-system-test.link-button"
-import { PersonalAccidentIllustration } from "@pluminsurance/design-system-test.illustrations"
-import { IconButton } from "@pluminsurance/design-system-test.icon-button"
+import { CrossCloseIcon, LeftChevronIcon, ChevronRight, InfoIcon, AlertFilledIcon, RightArrowIcon, CircleCheckFilledIcon, AlertIcon } from "../icons"
+import { Divider } from "../divider"
+import { ILinkButtonStates, LinkButton } from "../linkButton"
+import { PersonalAccidentIllustration } from "../illustrations"
+import { IconButton } from "../iconButton"
 
 function Drawer({
     ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
-    return <DrawerPrimitive.Root data-slot="drawer" {...props} />
+    return <DrawerPrimitive.Root direction="right" data-slot="drawer" {...props} />
 }
 
 function DrawerTrigger({
     ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Trigger>) {
-    return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />
+    return <DrawerPrimitive.Trigger  data-slot="drawer-trigger" {...props} />
 }
 
 function DrawerPortal({
@@ -59,7 +59,7 @@ function DrawerContent({
     title,
     buttonLabel,
     sideDrawerStyle,
-    type,
+    type="side",
     bodyContent,
     sideDrawerHeading,
     sideDrawerDescription,
@@ -77,15 +77,16 @@ function DrawerContent({
     onSideDrawerLinkButtonClick,
     getPreviousRecord,
     getNextRecord,
+    showNotification,
     ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Content> & { type?: DrawerType, title?: string, buttonLabel?: string, sideDrawerStyle: SideDrawerStyle, bodyContent: React.ReactNode, sideDrawerHeading: string, sideDrawerDescription: string, showCloseButton: boolean, currentRecord: number, totalRecords: number, recordType: string, leadingContent: React.ReactNode, trailingContent: React.ReactNode, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, sideDrawerHeadingButtonClick?: () => void, onSideDrawerLinkButtonClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void }) {
+}: React.ComponentProps<typeof DrawerPrimitive.Content> & { type?: DrawerType, title?: string, buttonLabel?: string, sideDrawerStyle: SideDrawerStyle, bodyContent: React.ReactNode, sideDrawerHeading: string, sideDrawerDescription: string, showCloseButton: boolean, currentRecord: number, totalRecords: number, recordType: string, leadingContent: React.ReactNode, trailingContent: React.ReactNode, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, sideDrawerHeadingButtonClick?: () => void, onSideDrawerLinkButtonClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void, showNotification?: boolean }) {
     return (
         <DrawerPortal data-slot="drawer-portal">
             <DrawerOverlay />
             <DrawerPrimitive.Content
                 data-slot="drawer-content"
                 className={cn(
-                    "group/drawer-content rounded-6 bg-background flex flex-col h-screen fixed inset-y-0 right-0 w-96 z-[9999]", className
+                    "group/drawer-content rounded-6 bg-background flex flex-col h-screen fixed inset-y-0 right-0 w-112 z-[9999]", type === 'full' ? "w-screen" : "w-112", className
                 )}
                 style={{
                     position: 'fixed',
@@ -98,8 +99,13 @@ function DrawerContent({
             >
                 {/* <div className="bg-muted mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-full group-data-[vaul-drawer-direction=bottom]/drawer-content:block" /> */}
                 {type === 'full' ? <FullPageDrawerHeader showCloseButton={showCloseButton} currentRecord={currentRecord} totalRecords={totalRecords} recordType={recordType} leadingContent={leadingContent} trailingContent={trailingContent} tertiaryButtonLabel={tertiaryButtonLabel} tertiaryButtonOnClick={tertiaryButtonOnClick} primaryButtonLabel={primaryButtonLabel} primaryButtonOnClick={primaryButtonOnClick} getPreviousRecord={getPreviousRecord} getNextRecord={getNextRecord} /> :
-                    <SideDrawerHeader style={sideDrawerStyle ?? "neutral"} buttonLabel={buttonLabel ?? "Button"} sideDrawerHeadingButtonClick={sideDrawerHeadingButtonClick ?? (() => { })} title={title ?? "Title"} />}
-                <div className="flex h-full p-6 rounded-b-6 flex-col bg-interactive-background-white-normal">
+                    showNotification && <SideDrawerHeader 
+                    style={sideDrawerStyle ?? "neutral"} 
+                    buttonLabel={buttonLabel ?? "Button"} 
+                    sideDrawerHeadingButtonClick={sideDrawerHeadingButtonClick ?? (() => { })} 
+                    title={title ?? "Title"}
+                    />}
+                <div className={cn("flex h-full p-6 rounded-b-6 flex-col bg-interactive-background-white-normal", !showNotification && "rounded-t-6")}>
                     <div className="w-full h-fit mb-4">
                         {type === 'side' &&
                             <div className="flex justify-between gap-4">

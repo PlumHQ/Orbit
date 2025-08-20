@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Leaflet } from './index';
-import { InfoIcon, RightArrowIcon } from '@pluminsurance/design-system-test.icons';
+import { InfoIcon, RightArrowIcon } from '../icons';
 
 const meta: Meta<typeof Leaflet> = {
   title: 'Design System/Leaflet',

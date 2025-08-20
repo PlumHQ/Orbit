@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from '@pluminsurance/design-system-test.button';
-import { Card } from '@pluminsurance/design-system-test.cards';
+import { Button } from '../button';
+import { Card } from '../cards';
 import {
   Dialog,
   DialogClose,

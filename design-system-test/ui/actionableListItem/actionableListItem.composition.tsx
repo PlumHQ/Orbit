@@ -1,10 +1,10 @@
 import React from 'react';
 import { ActionableListItem } from './index';
-import { HealthInsuraceIllustration } from '@pluminsurance/design-system-test.illustrations';
+import { HealthInsuraceIllustration } from '../illustrations';
 import {
   InfoIcon,
   RightArrowIcon,
-} from '@pluminsurance/design-system-test.icons';
+} from '../icons';
 
 export const SelectLargeActionableListItem = () => {
   return (

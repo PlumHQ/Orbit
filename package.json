@@ -3,8 +3,24 @@
   "version": "1.0.0",
   "description": "Plum's comprehensive design system for healthcare applications",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": {
+      "import": "./dist/styles.css"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/AdityaPlum/design-system.git"
@@ -24,15 +40,21 @@
     "plum"
   ],
   "scripts": {
-    "build": "nx build",
-    "test": "nx test",
-    "lint": "nx lint",
+    "build": "vite build",
+    "build:types": "tsc --project tsconfig.build.json",
+    "dev": "vite",
+    "test": "vitest",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "storybook:serve": "npx http-server storybook-static",
-    "prepare": "npm run build"
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "prepare": "npm run build",
+    "release": "npm run build && changeset publish"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@fontsource/inter": "^5.2.5",
     "@radix-ui/react-avatar": "^1.1.9",
@@ -49,8 +71,8 @@
     "vaul": "^1.1.2"
   },
   "devDependencies": {
-    "@nx/js": "21.0.3",
-    "@nx/workspace": "21.0.3",
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.6",
     "@storybook/addon-docs": "^8.6.14",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/addon-interactions": "^8.6.14",
@@ -59,10 +81,14 @@
     "@storybook/react-vite": "^8.6.14",
     "@storybook/test": "^8.6.14",
     "@types/node": "^24.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.40.0",
+    "@typescript-eslint/parser": "^8.40.0",
     "@vitejs/plugin-react": "^4.7.0",
-    "nx": "21.0.3",
+    "eslint": "^9.33.0",
+    "glob": "^11.0.3",
     "storybook": "^8.6.14",
     "typescript": "^5.9.2",
-    "vite": "^5.4.19"
+    "vite": "^5.4.19",
+    "vitest": "^3.2.4"
   }
 }

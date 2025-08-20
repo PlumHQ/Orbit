@@ -1,4 +1,6 @@
-import * as globals from './globals.css';
-import * as output from './output.css';
+// CSS imports for bundling
+import './globals.css';
+import './output.css';
 
-export {globals, output};
+// Re-export utilities
+export * from '../ui/utilities';

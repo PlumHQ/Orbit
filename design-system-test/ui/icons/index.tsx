@@ -37,6 +37,15 @@ import EllipsisIcon from './ellipsis';
 import LeftChevronIcon from './leftChevronIcon';
 import AlertIcon from './AlertIcon';
 import LeftArrowIcon from './leftArrowIcon';
+import HomeIcon from './homeIcon';
+import StarIcon from './starIcon';
+import IndianRupee from './inidanRupee';
+import EndorsementsIcon from './endorsementsIcon';
+import FileText from './fileText';
+import GraduationCapIcon from './graduationCapIcon';
+import MessageQuestionIcon from './messageQuestionIcon';
+import SettingsIcon from './settingsIcon';
+import ChevronUp from './ChevronUp';
 
 export type IIconProps = {
   color?: string;
@@ -83,5 +92,14 @@ export {
   EllipsisIcon,
   LeftChevronIcon,
   AlertIcon,
-  LeftArrowIcon
+  LeftArrowIcon,
+  HomeIcon,
+  StarIcon,
+  IndianRupee,
+  EndorsementsIcon,
+  FileText,
+  GraduationCapIcon,
+  MessageQuestionIcon,
+  SettingsIcon,
+  ChevronUp
 };

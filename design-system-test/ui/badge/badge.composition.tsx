@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge } from './index';
-import {InfoIcon} from '@pluminsurance/design-system-test.icons'
+import {InfoIcon} from '../icons'
 
 export const LargeNeutralPrimaryBadge = () => {
   return <Badge icon={InfoIcon} styleVariant={'neutral'} size="large" variant="primary" value={"Badge"} />;

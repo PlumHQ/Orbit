@@ -5,7 +5,7 @@
     SquareCheckIcon,
     SquareIcon,
     SquareMinusIcon,
-  } from '@pluminsurance/design-system-test.icons';
+  } from '../icons';
   import '@fontsource/inter';
 
 

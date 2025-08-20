@@ -1,8 +1,8 @@
 import React from 'react';
 import { cva } from 'class-variance-authority';
 import { TCardSizes, TCardStyles } from './types';
-import '@pluminsurance/design-system-test.styles';
-import { cn } from '@pluminsurance/design-system-test.utilities';
+import '../../styles/output.css';
+import { cn } from '../utilities';
 import '@fontsource/inter';
 
 export interface ICard {

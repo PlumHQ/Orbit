@@ -1,3 +1,3 @@
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerTrigger, DrawerClose, DrawerOverlay } from './component';
+import { Drawer, DrawerContent, DrawerTrigger } from './component';
 
-export { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerTrigger, DrawerClose, DrawerOverlay };
+export { Drawer, DrawerContent, DrawerTrigger };

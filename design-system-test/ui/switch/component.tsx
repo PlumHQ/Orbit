@@ -1,6 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { CheckedIcon } from '@pluminsurance/design-system-test.icons';
+import { CheckedIcon } from '../icons';
 import { IToggleSwitchLabelPositions, IToggleSwitchSizes, IToggleSwitchStyleVariants } from './types';
 import '@fontsource/inter';
 

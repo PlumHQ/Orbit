@@ -1,4 +1,4 @@
-import { InfoIcon, SearchIcon, UserIcon } from '@pluminsurance/design-system-test.icons';
+import { InfoIcon, SearchIcon, UserIcon } from '../icons';
 import { InputSelect } from './index';
 import React from 'react';
 

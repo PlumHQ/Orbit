@@ -4,7 +4,7 @@ import { useState } from "react";
 import * as React from "react";
 
 const meta: Meta<typeof Breadcrumb> = {
-    title: "Breadcrumb",
+    title: "Design System/Breadcrumb",
     component: Breadcrumb,
     tags: ["autodocs"],
     argTypes: {

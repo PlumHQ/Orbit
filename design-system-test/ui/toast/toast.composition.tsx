@@ -1,6 +1,6 @@
 import React from 'react';
 import { Toast } from './component';
-import { Button } from '@pluminsurance/design-system-test.button';
+import { Button } from '../button';
 export const NegativeBasicToast = () => {
   return (
     <Toast

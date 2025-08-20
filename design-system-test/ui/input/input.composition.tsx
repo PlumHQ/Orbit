@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input } from './index';
-import { CalendarIcon, SearchIcon } from '@pluminsurance/design-system-test.icons';
+import { CalendarIcon, SearchIcon } from '../icons';
 
 export const RequiredLargeInputField = () => {
   return (

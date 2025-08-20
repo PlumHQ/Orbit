@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './index';
-import { Button } from '@pluminsurance/design-system-test.button';
+import { Button } from '../button';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Design System/Tooltip',

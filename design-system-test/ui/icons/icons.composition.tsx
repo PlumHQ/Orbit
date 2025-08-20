@@ -30,7 +30,15 @@ import { DownloadIcon,
   EllipsisIcon,
   LeftChevronIcon,
   AlertIcon,
-  LeftArrowIcon} from '.';
+  LeftArrowIcon,
+  HomeIcon,
+  StarIcon,
+  IndianRupee,
+  EndorsementsIcon,
+  FileText,
+  GraduationCapIcon,
+  MessageQuestionIcon,
+  ChevronUp} from '.';
 
 export const LargePrimaryCrosscloseIcon = () => {
   return (
@@ -325,6 +333,70 @@ export const LargeLeftArrowIcon = () => {
   return (
     <>
       <LeftArrowIcon size={'large'} color={'gray'} />
+    </>
+  )
+}
+
+export const LargeHomeIcon = () => {
+  return (
+    <>
+      <HomeIcon size={'large'} color={'gray'} />
+    </>
+  )
+}
+
+export const LargeStarIcon = () => {
+  return (
+    <>
+      <StarIcon size={'large'} color={'gray'} />
+    </>
+  )
+}
+
+export const LargeIndianRupee = () => {
+  return (
+    <>
+      <IndianRupee size={'large'} color={'gray'} />
+    </>
+  )
+}
+
+export const LargeEndorsementsIcon = () => {      
+  return (
+    <>
+      <EndorsementsIcon size={'large'} color={'gray'} />
+    </>
+  )
+}
+
+export const LargeFileText = () => {
+  return (
+    <>
+      <FileText size={'large'} color={'gray'} />
+    </>
+  )
+}
+
+export const LargeGraduationCapIcon = () => {
+  return (
+    <>
+      <GraduationCapIcon size={'large'} color={'gray'} />
+    </>
+  )
+}
+
+export const LargeMessageQuestionIcon = () => {
+  return (
+    <>
+      <MessageQuestionIcon size={'large'} color={'gray'} />
+    </>
+  )
+}
+
+export const LargeChevronUpIcon = () => {
+  return (
+    <>
+      <ChevronUp size={'large'} color={'gray'} />
     </>
   )
 }
