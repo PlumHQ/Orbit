@@ -15,8 +15,10 @@ const meta: Meta<typeof Drawer> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+type StoryWithArgs = StoryObj<{type?: DrawerType, sideDrawerStyle?: SideDrawerStyle}>;
+type StoryWithType = StoryObj<{type?: DrawerType}>;
 
-export const DrawerDemoWithSideNotification: Story = {
+export const DrawerDemoWithSideNotification: StoryWithArgs = {
     render: ({type = "side", sideDrawerStyle = "information"}: {type?: DrawerType, sideDrawerStyle?: SideDrawerStyle}) => {
         const [currentRecord, setCurrentRecord] = useState(1);
         const [totalRecords, setTotalRecords] = useState(10);
@@ -64,7 +66,7 @@ export const DrawerDemoWithSideNotification: Story = {
     },
 }
 
-export const DrawerDemoWithSideNoNotification: Story = {
+export const DrawerDemoWithSideNoNotification: StoryWithArgs = {
     render: ({type = "side", sideDrawerStyle = "information"}: {type?: DrawerType, sideDrawerStyle?: SideDrawerStyle}) => {
         const [currentRecord, setCurrentRecord] = useState(1);
         const [totalRecords, setTotalRecords] = useState(10);
@@ -112,8 +114,8 @@ export const DrawerDemoWithSideNoNotification: Story = {
     },
 }
 
-export const DrawerDemoWithFullPage: Story = {
-    render: ({type = "side", sideDrawerStyle = "information"}: {type?: DrawerType, sideDrawerStyle?: SideDrawerStyle}) => {
+export const DrawerDemoWithFullPage: StoryWithType = {
+    render: ({type = "side"}: {type?: DrawerType}) => {
         const [currentRecord, setCurrentRecord] = useState(1);
         const [totalRecords, setTotalRecords] = useState(10);
         return (
@@ -142,7 +144,7 @@ export const DrawerDemoWithFullPage: Story = {
                     primaryButtonLabel="Primary" 
                     primaryButtonOnClick={() => {alert("primary button clicked")}} 
                     buttonLabel="Button" 
-                    sideDrawerStyle={sideDrawerStyle} 
+                    sideDrawerStyle="information" 
                     bodyContent={<div className={`h-full bg-surface-background-${currentRecord%2 ? "peach": "gray"}-subtle border border-dashed rounded-6 flex items-center justify-center`}>Slot (Swap it with your content)</div>} 
                     sideDrawerHeading="Personal Accident" 
                     sideDrawerDescription="Personal Accident" 
@@ -150,6 +152,8 @@ export const DrawerDemoWithFullPage: Story = {
                     onSideDrawerLinkButtonClick={() => {alert("link button clicked")}}
                     getPreviousRecord={() => {setCurrentRecord(currentRecord - 1)}}
                     getNextRecord={() => {setCurrentRecord(currentRecord + 1)}}
+                    showSearchButton={true}
+                    onSearchButtonClick={() => {alert("search button clicked")}}
                 />
             </Drawer>
         )

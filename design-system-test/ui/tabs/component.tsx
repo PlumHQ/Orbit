@@ -97,6 +97,7 @@ function TabsList({
                 selectedValue,
                 styleVariant,
                 orientation,
+                isLastTab: index === React.Children.count(children) - 1,
               })
             : child
         )}
@@ -115,6 +116,7 @@ interface TabsTriggerProps extends React.ComponentProps<typeof TabsPrimitive.Tri
   orientation?: string;
   value: string;
   className?: string;
+  isLastTab?: boolean;
 }
 
 function TabsTrigger({
@@ -127,13 +129,14 @@ function TabsTrigger({
   styleVariant,
   onValueChange,
   orientation,
+  isLastTab,
   ...props
 }: TabsTriggerProps) {
   return (
     <TabsPrimitive.Trigger value={value} data-slot="tabs-trigger" {...props}>
       <button
         className={`${
-          orientation === 'vertical' ? `flex` : 'mr-4 pt-1'
+          orientation === 'vertical' ? `flex` : `${!isLastTab ? 'mr-4' : ''} pt-1`
         } focus-visible:plum-focus focus:none mx-05 rounded-2`}
         onClick={() => {
           onValueChange?.(value as string);

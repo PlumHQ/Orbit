@@ -14,9 +14,10 @@ export interface IToggleSwitch {
   labelPosition?: IToggleSwitchLabelPositions;
   disabled?:boolean;
   size: IToggleSwitchSizes;
+  tabIndex?: number;
 }
 
-const SwitchLabel = ({ label, description, labelPosition, styleVariant, disabled, size }: {
+const SwitchLabel = ({ label, description, labelPosition = "left", styleVariant, disabled, size }: {
   label?: string;
   description?: string;
   labelPosition?: IToggleSwitchLabelPositions;
@@ -34,38 +35,48 @@ const SwitchLabel = ({ label, description, labelPosition, styleVariant, disabled
 
 export const ToggleSwitch = ({
   checked = false,
-  onChange = (checked) => {},
+  onChange = (checked: boolean) => {},
   label,
   description,
   labelPosition = "left",
   styleVariant,
   disabled=false,
   size="medium",
+  tabIndex = 0,
 }: IToggleSwitch) => {
-  const changeToggleSwitch = () =>{
-    if(!disabled){
+  const handleToggle = () => {
+    if (!disabled) {
       onChange(!checked);
     }
-  }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleToggle();
+    }
+  };
 
   return (
-    <div className={`flex font-primary ${disabled ? ``: `cursor-pointer`}`} onClick={changeToggleSwitch}>
+    <div className={`flex font-primary`}>
       {labelPosition === 'left' && (
         <SwitchLabel label={label} description={description} labelPosition={labelPosition} styleVariant={styleVariant} disabled={disabled} size={size} />
       )}
       <div>
         <button
           type="button"
-          // onClick={() => onChange(!checked)}
+          onClick={handleToggle}
+          onKeyDown={handleKeyDown}
           role="switch"
           aria-checked={checked}
+          tabIndex={disabled ? -1 : tabIndex}
           className={clsx(
             `relative inline-flex p-1 py-05 w-${size === "medium" ? "9" : "7"} flex-shrink-0 cursor-pointer rounded-8 border border-interactive-border-${
               checked ? 'primary-normal' : styleVariant === "gray" ? `gray-${disabled ? 'disabled' : 'intense'}` : `beige-${disabled ? 'disabled' : 'normal'}`
             } transition-colors transition-switch`,
             checked ? `bg-interactive-background-primary-${disabled ? 'disabled' : 'normal'}` : '',
             `${disabled ? '' : checked ? `hover:bg-interactive-background-primary-highlighted` : `hover:bg-interactive-background-${styleVariant}-muted`}`,
-            `focus:outline-none focus:ring-offset-2 focus:ring-interactive-border-primary-normal`
+            disabled ? '' : 'focus-visible:plum-focus'
           )}
           disabled={disabled}
         >

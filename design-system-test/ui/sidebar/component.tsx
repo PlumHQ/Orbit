@@ -534,7 +534,7 @@ function SidebarMenuButton({
     <Tooltip>
       <TooltipTrigger asChild onClick={item.onClick}>{button}</TooltipTrigger>
       <TooltipContent
-        position="bottom"
+        position="right"
         align="center"
         hidden={state !== "collapsed"}
         {...tooltip}

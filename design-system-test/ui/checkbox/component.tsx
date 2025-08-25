@@ -56,10 +56,10 @@
       ? `primary-${disabled ? `disabled` : `normal`}`
       : `${styleVariant}-${disabled ? `disabled` : `subtle`}`;
     return (
-      <div className='flex items-center'>
+      <div className='flex items-center focus-visible:outline-none focus-within:outline-none'>
         {React.createElement(checkBoxIcon as any, {
           size: sizeMap[size],
-          className: `fill-${error ? 'feedback' : 'interactive'}-icon-${iconBasecolor} mr-1 mt-05 rounded-${size==="large" ? 15 : 1}`,
+          className: `focus-visible:outline-none focus-within:plum-focus focus-visible:plum-focus cursor-pointer fill-${error ? 'feedback' : 'interactive'}-icon-${iconBasecolor} mr-1 mt-05 rounded-${size==="large" ? 15 : 1}`,
           onKeyDown: onKeyDown,
           tabIndex: tabIndex,
           role: role,
@@ -80,7 +80,7 @@
     errorText?: string;
     disabled?: boolean;
     label: string;
-    onClick?:()=>void;
+    onClick?: (checked: boolean) => void;
     onKeyDown?: (event: React.KeyboardEvent) => void;
     tabIndex?: number;
     role?: string;
@@ -98,7 +98,7 @@
     errorText = '',
     disabled,
     label = '',
-    onClick=()=>{},
+    onClick=(checked: boolean)=>{},
     onKeyDown,
     tabIndex,
     role,
@@ -116,16 +116,17 @@
       if (disabled) return;
       
       if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        onClick();
+        // event.preventDefault();  
+        onClick(!checked);
       }
     };
 
     return (
       <div 
-        className={`flex font-primary ${disabled ? '' : 'cursor-pointer'}`} 
-        onClick={!disabled ? onClick : undefined}
+        className={`font-primary ${disabled ? '' : 'cursor-pointer'}`} 
+        onClick={() => onClick(!checked)}
       >
+        <div className='flex items-center'>
         <CheckboxBase
           checked={checked}
           isIntermediate={isIntermediate}
@@ -140,16 +141,18 @@
           ariaDisabled={ariaDisabled}
           ariaLabel={ariaLabel}
         />
-        <div>
-          <div
+         <div
             className={`text-interactive-text-${styleVariant}-${
               disabled ? 'disabled' : 'normal'
             } font-normal text-${labelTextSizeMap[size]}`}
           >
             {label}
           </div>
+          </div>
+        <div>
+         
           {error && errorText && (
-            <div className={`flex items-center`}>
+            <div className={`flex items-center ml-7`}>
                 <ErrorIndicationIcon
                   size={'small'}
                   className={`fill-feedback-icon-negative-intense mr-1`}

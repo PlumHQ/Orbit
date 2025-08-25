@@ -72,7 +72,7 @@ export const ActionableListItem = ({
   const LeadingAsset = leadingAsset;
   const [isSelected, setIsSelected] = React.useState(false);
   const actionableListVariants = cva(
-    `flex cursor-pointer relative z-1 font-primary justify-between w-full ${variant === 'secondary'
+    `flex cursor-pointer relative z-1 font-primary justify-between w-1405 ${variant === 'secondary'
       ? 'bg-surface-background-peach-subtle'
       : 'bg-interactive-background-white-normal'
     } hover:bg-interactive-background-${variant === "secondary" ? "peach" : "gray"}-normal border border-interactive-border-${behaviour === 'select' && isSelected ? 'primary' : 'gray'

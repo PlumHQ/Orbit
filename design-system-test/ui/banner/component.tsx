@@ -48,7 +48,7 @@ export function Banner({
   onBannerClose,
 }: IBanner) {
   const bannerVariants = cva(
-    `font-primary w-full text-feedback-text-${
+    `font-primary text-feedback-text-${
       styleVariant === 'notice' ? 'information-intense' : 'neutral-normal'
     }  border border-feedback-border-${styleVariant}-normal`,
     {
@@ -66,8 +66,8 @@ export function Banner({
             'bg-feedback-background-notice-subtle border border-solid border-surface-border-information-normal',
         },
         layout: {
-          compact: `px-6 py-3 rounded-3`,
-          expanded: 'px-8 py-4 rounded-4',
+          compact: `px-6 py-3 rounded-3 w-188`,
+          expanded: 'px-8 py-4 rounded-4 w-fit',
         },
       },
       defaultVariants: {
@@ -165,7 +165,7 @@ export function Banner({
                   </div>
                 )}
           </div>
-          <div className={`max-width-640`}>
+          <div className={`max-w-160`}>
             {title && (
               <div
                 className={`${
@@ -186,7 +186,7 @@ export function Banner({
                 {body}
               </div>
             )}
-            {leadingButtonText && (
+            {leadingButtonText && layout === 'expanded' && (
               <div>
                 <LinkButton
                   label={leadingButtonText}

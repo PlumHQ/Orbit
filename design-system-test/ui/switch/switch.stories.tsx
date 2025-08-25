@@ -29,6 +29,24 @@ const meta: Meta<typeof Switch> = {
       control: { type: 'boolean' },
       description: 'Whether the switch is disabled',
     },
+    labelPosition: {
+      control: { type: 'select' },
+      options: ['left', 'right'],
+      description: 'The position of the label',
+    },
+    label: {
+      control: { type: 'text' },
+      description: 'The label of the switch',
+    },
+    description: {
+      control: { type: 'text' },
+      description: 'The description of the switch',
+    },
+    size: {
+      control: { type: 'select' },
+      options: ['small', 'medium'],
+      description: 'The size of the switch',
+    },
   },
   args: {
     styleVariant: 'beige',
@@ -104,7 +122,7 @@ export const Interactive: Story = {
           {...args} 
           checked={checked} 
           onChange={() => setChecked(!checked)}
-          size="medium"
+          size={args.size}
           label="Beige"
           labelPosition="left"
           description="Beige Description"
@@ -115,5 +133,6 @@ export const Interactive: Story = {
   args: {
     styleVariant: 'beige',
     disabled: false,
+    size: 'medium',
   },
 };

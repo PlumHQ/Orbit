@@ -3,7 +3,7 @@ import React from 'react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './index';
 import { Button } from '../button';
 
-const meta: Meta<typeof Tooltip> = {
+const meta: Meta<typeof Tooltip & typeof TooltipContent> = {
   title: 'Design System/Tooltip',
   component: Tooltip,
   parameters: {
@@ -12,6 +12,19 @@ const meta: Meta<typeof Tooltip> = {
       description: {
         component: 'A tooltip component for displaying helpful information on hover.',
       },
+    },
+  },
+
+  argTypes: {
+    position: {
+      control: { type: 'select' },
+      options: ['top', 'right', 'bottom', 'left'],
+      description: 'The position of the tooltip',
+    },
+    align: {
+      control: { type: 'select' },
+      options: ['center', 'start', 'end'],
+      description: 'The alignment of the tooltip',
     },
   },
   tags: ['autodocs'],
@@ -30,7 +43,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <div
       style={{
         padding: '200px',
@@ -60,7 +73,8 @@ export const Default: Story = {
           totalSlides={5}
           variant="detailed"
           isCoachMark={true}
-          position={'top'}
+          position={args.position}
+          align={args.align}
         >
           <div
             style={{
@@ -78,7 +92,11 @@ export const Default: Story = {
         </TooltipContent>
       </Tooltip>
     </div>
-  )
+  ),
+  args: {
+    position: 'top',
+    align: 'center',
+  },
 };
 
 export const MultiplePlacements: Story = {

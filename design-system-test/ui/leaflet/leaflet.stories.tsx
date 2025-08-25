@@ -18,12 +18,12 @@ const meta: Meta<typeof Leaflet> = {
   argTypes: {
     style: {
       control: { type: 'select' },
-      options: ['positive', 'information', 'notice'],
+      options: ['positive', 'information', 'notice', 'neutral', 'negative'],
       description: 'The style of the leaflet',
     },
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      options: ['medium', 'large'],
       description: 'The size of the leaflet',
     },
     leadingText: {
@@ -55,7 +55,6 @@ export const Default: Story = {
     trailingIcon: RightArrowIcon,
     leadingText: 'Information',
     trailingText: 'Additional details',
-    width: '800',
   },
 };
 
@@ -67,7 +66,6 @@ export const Positive: Story = {
     trailingIcon: RightArrowIcon,
     leadingText: 'Success',
     trailingText: 'Operation completed',
-    width: '800',
   },
 };
 
@@ -79,7 +77,6 @@ export const Notice: Story = {
     trailingIcon: RightArrowIcon,
     leadingText: 'Notice',
     trailingText: 'Please review',
-    width: '800',
   },
 };
 
@@ -90,15 +87,14 @@ export const WithIcon: Story = {
     leadingText: 'With Icon',
     trailingText: 'Icon included',
     leadingIcon: InfoIcon,
-    width: '800',
   },
 };
 
 export const AllSizes: Story = {
   render: (args) => (
     <div className="space-y-4 w-full max-w-md">
-      <Leaflet style="information" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Medium" trailingText="Medium size" width="800" />
-      <Leaflet style="information" size="large" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Large" trailingText="Large size" width="800" />
+      <Leaflet style="information" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Medium" trailingText="Medium size" />
+      <Leaflet style="information" size="large" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Large" trailingText="Large size" />
     </div>
   ),
   args: {},
@@ -107,9 +103,11 @@ export const AllSizes: Story = {
 export const AllStyles: Story = {
   render: (args) => (
     <div className="space-y-4 w-full max-w-md">
-      <Leaflet style="positive" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Positive" trailingText="Success message" width="800" />
-      <Leaflet style="information" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Information" trailingText="Info message" width="800" />
-      <Leaflet style="notice" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Notice" trailingText="Important notice" width="800" />
+      <Leaflet style="positive" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Positive" trailingText="Success message" />
+      <Leaflet style="information" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Information" trailingText="Info message" />
+      <Leaflet style="notice" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Notice" trailingText="Important notice" />
+      <Leaflet style="neutral" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Neutral" trailingText="Neutral message" />
+      <Leaflet style="negative" size="medium" leadingIcon={InfoIcon} trailingIcon={RightArrowIcon} leadingText="Negative" trailingText="Negative message" />
     </div>
   ),
   args: {},

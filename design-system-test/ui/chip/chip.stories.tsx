@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Chip } from './index';
-import { InfoIcon } from '../icons';
+import { ChevronDown, FilterIcon, InfoIcon } from '../icons';
 import { useState } from 'react';
 
 const meta: Meta<typeof Chip> = {
@@ -19,12 +19,12 @@ const meta: Meta<typeof Chip> = {
   argTypes: {
     styleVariant: {
       control: { type: 'select' },
-      options: ['gray', 'secondary', 'success', 'warning', 'error'],
+      options: ['gray', 'beige'],
       description: 'The style variant of the chip',
     },
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      options: ['medium', 'small'],
       description: 'The size of the chip',
     },
     value: {
@@ -38,6 +38,19 @@ const meta: Meta<typeof Chip> = {
     disabled: {
       control: { type: 'boolean' },
       description: 'Whether the chip is disabled',
+    },
+    iconOnly: {
+      control: { type: 'boolean' },
+      description: 'Whether the chip is icon only',
+    },
+    leadingIcon: {
+      control: { type: 'select' },
+      options: [FilterIcon, ChevronDown],
+      description: 'The leading icon of the chip',
+    },
+    trailingCounter: {
+      control: { type: 'number' },
+      description: 'The trailing counter of the chip',
     },
   },
   args: {
@@ -59,15 +72,26 @@ export const Default: Story = {
     size: 'medium',
     value: 'Default Chip',
     isSelected: false,
+    leadingIcon: FilterIcon,
+    trailingIcon: ChevronDown,
   },
 };
 
 export const Selected: Story = {
+  render: (args) => (
+    <div className="flex gap-4 items-center">
+      <Chip styleVariant='gray' isSelected={args.isSelected} onClick={() => {}} {...args} size="medium" value="Medium" />
+    </div>
+  ),
   args: {
     styleVariant: 'gray',
     size: 'medium',
     value: 'Selected Chip',
     isSelected: true,
+    leadingCounter: 10,
+    trailingCounter: 10,
+    leadingIcon: FilterIcon,
+    trailingIcon: ChevronDown,
   },
 };
 

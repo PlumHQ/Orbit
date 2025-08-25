@@ -101,5 +101,5 @@ export {
   GraduationCapIcon,
   MessageQuestionIcon,
   SettingsIcon,
-  ChevronUp
+  ChevronUp,
 };

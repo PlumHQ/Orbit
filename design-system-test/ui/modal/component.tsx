@@ -186,7 +186,7 @@ function DialogFooter({
       data-slot="dialog-footer"
       className="px-9 pb-8 flex-shrink-0"
     >
-      {showFooterOverFlowGradient && <div className="flex flex-col bg-gradient-to-b from-transparent via-white/60 to-white h-10 relative" />}
+      {showFooterOverFlowGradient && <div className="flex flex-col bg-gradient-to-t from-transparent via-white/60 to-white h-10 relative" />}
       <div className="bg-surface-background-white-normal">
         {showConfirmationCheckbox && (
           <div className="flex items-center mb-2">

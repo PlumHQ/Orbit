@@ -38,6 +38,34 @@ const meta: Meta<typeof Checkbox> = {
       options: ['small', 'medium', 'large'],
       description: 'The size of the checkbox',
     },
+    error: {
+      control: { type: 'boolean' },
+      description: 'Whether the checkbox is in error state',
+    },
+    errorText: {
+      control: { type: 'text' },
+      description: 'The error text of the checkbox',
+    },
+    label: {
+      control: { type: 'text' },
+      description: 'The label of the checkbox',
+    },
+    onClick: {
+      action: 'clicked',
+      description: 'The function to be called when the checkbox is clicked',
+    },
+    onKeyDown: {
+      action: 'keydown',
+      description: 'The function to be called when the checkbox is keyed down',
+    },
+    tabIndex: {
+      control: { type: 'number' },
+      description: 'The tab index of the checkbox',
+    },
+    role: {
+      control: { type: 'text' },
+      description: 'The role of the checkbox',
+    },
   },
   args: {
     checked: false,
@@ -52,6 +80,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  render: (args) => {
+    const [checked, setChecked] = useState(args.checked);
+    return (
+      <div className="flex gap-4 items-center">
+        <Checkbox error={true} styleVariant='gray' {...args} size="medium" checked={checked} onClick={setChecked} label="Checkbox" errorText="Error text" />
+      </div>
+    )
+  },
   args: {
     checked: false,
     disabled: false,

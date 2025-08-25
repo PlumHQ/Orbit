@@ -7,7 +7,7 @@ import { cn } from "../utilities"
 import { Button } from "../button"
 import { DrawerType, SideDrawerStyle } from "./types"
 import { Dialog } from "@radix-ui/react-dialog"
-import { CrossCloseIcon, LeftChevronIcon, ChevronRight, InfoIcon, AlertFilledIcon, RightArrowIcon, CircleCheckFilledIcon, AlertIcon } from "../icons"
+import { CrossCloseIcon, LeftChevronIcon, ChevronRight, InfoIcon, AlertFilledIcon, RightArrowIcon, CircleCheckFilledIcon, AlertIcon, SearchIcon } from "../icons"
 import { Divider } from "../divider"
 import { ILinkButtonStates, LinkButton } from "../linkButton"
 import { PersonalAccidentIllustration } from "../illustrations"
@@ -78,8 +78,10 @@ function DrawerContent({
     getPreviousRecord,
     getNextRecord,
     showNotification,
+    showSearchButton,
+    onSearchButtonClick,
     ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Content> & { type?: DrawerType, title?: string, buttonLabel?: string, sideDrawerStyle: SideDrawerStyle, bodyContent: React.ReactNode, sideDrawerHeading: string, sideDrawerDescription: string, showCloseButton: boolean, currentRecord: number, totalRecords: number, recordType: string, leadingContent: React.ReactNode, trailingContent: React.ReactNode, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, sideDrawerHeadingButtonClick?: () => void, onSideDrawerLinkButtonClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void, showNotification?: boolean }) {
+}: React.ComponentProps<typeof DrawerPrimitive.Content> & { type?: DrawerType, title?: string, buttonLabel?: string, sideDrawerStyle: SideDrawerStyle, bodyContent: React.ReactNode, sideDrawerHeading: string, sideDrawerDescription: string, showCloseButton: boolean, currentRecord: number, totalRecords: number, recordType: string, leadingContent: React.ReactNode, trailingContent: React.ReactNode, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, sideDrawerHeadingButtonClick?: () => void, onSideDrawerLinkButtonClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void, showNotification?: boolean, showSearchButton?: boolean, onSearchButtonClick?: () => void }) {
     return (
         <DrawerPortal data-slot="drawer-portal">
             <DrawerOverlay />
@@ -98,7 +100,7 @@ function DrawerContent({
                 {...props}
             >
                 {/* <div className="bg-muted mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-full group-data-[vaul-drawer-direction=bottom]/drawer-content:block" /> */}
-                {type === 'full' ? <FullPageDrawerHeader showCloseButton={showCloseButton} currentRecord={currentRecord} totalRecords={totalRecords} recordType={recordType} leadingContent={leadingContent} trailingContent={trailingContent} tertiaryButtonLabel={tertiaryButtonLabel} tertiaryButtonOnClick={tertiaryButtonOnClick} primaryButtonLabel={primaryButtonLabel} primaryButtonOnClick={primaryButtonOnClick} getPreviousRecord={getPreviousRecord} getNextRecord={getNextRecord} /> :
+                {type === 'full' ? <FullPageDrawerHeader showCloseButton={showCloseButton} currentRecord={currentRecord} totalRecords={totalRecords} recordType={recordType} leadingContent={leadingContent} trailingContent={trailingContent} tertiaryButtonLabel={tertiaryButtonLabel} tertiaryButtonOnClick={tertiaryButtonOnClick} primaryButtonLabel={primaryButtonLabel} primaryButtonOnClick={primaryButtonOnClick} getPreviousRecord={getPreviousRecord} getNextRecord={getNextRecord} showSearchButton={showSearchButton} onSearchButtonClick={onSearchButtonClick} /> :
                     showNotification && <SideDrawerHeader 
                     style={sideDrawerStyle ?? "neutral"} 
                     buttonLabel={buttonLabel ?? "Button"} 
@@ -178,7 +180,7 @@ function SideDrawerHeader({ style, buttonLabel, sideDrawerHeadingButtonClick, ti
     )
 }
 
-function FullPageDrawerHeader({ showCloseButton, leadingContent, trailingContent, currentRecord, totalRecords, recordType, tertiaryButtonLabel, tertiaryButtonOnClick, primaryButtonLabel, primaryButtonOnClick, getPreviousRecord, getNextRecord }: { showCloseButton: boolean, leadingContent?: React.ReactNode, trailingContent?: React.ReactNode, currentRecord?: number, totalRecords?: number, recordType?: string, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void }) {
+function FullPageDrawerHeader({ showCloseButton, leadingContent, trailingContent, currentRecord, totalRecords, recordType, tertiaryButtonLabel, tertiaryButtonOnClick, primaryButtonLabel, primaryButtonOnClick, getPreviousRecord, getNextRecord, showSearchButton, onSearchButtonClick }: { showCloseButton: boolean, leadingContent?: React.ReactNode, trailingContent?: React.ReactNode, currentRecord?: number, totalRecords?: number, recordType?: string, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void, showSearchButton?: boolean, onSearchButtonClick?: () => void }) {
     return (
         <DrawerHeader className="flex justify-between w-full items-center w-screen py-4 px-12 bg-surface-background-beige-subtle">
             <div className="flex gap-3 w-full justify-between">
@@ -195,6 +197,15 @@ function FullPageDrawerHeader({ showCloseButton, leadingContent, trailingContent
                 </div>
                 <div className="flex gap-3">
                     {trailingContent && <div className="w-8">{trailingContent}</div>}
+                    {showSearchButton && <Button
+                        variant="tertiary"
+                        styleVariant="beige"
+                        size="large"
+                        iconOnly
+                        label="Search"
+                        leadingIcon={SearchIcon}
+                        onClick={onSearchButtonClick}
+                    />}
                     {currentRecord && totalRecords &&
                         <div className="flex gap-1">
                             <div className="w-3 rotate-90 ml-6">

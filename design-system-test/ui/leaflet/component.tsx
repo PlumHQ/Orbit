@@ -24,7 +24,7 @@ export const Leaflet = ({
   trailingIcon,
   trailingText,
   onClick = () => {},
-  width,
+  width="562",
 }: ILeaflet) => {
   const colorDepthMapping = {
     positive: ['intense', 'intense'],
@@ -35,7 +35,7 @@ export const Leaflet = ({
 
   }
   const leafletVariants = cva(
-    `w-full cursor-pointer flex items-center justify-between rounded-b font-primary font-medium border border-feedback-border-${style}-subtle bg-interactive-background-${style}-subtle hover:bg-feedback-background-${style}-normal text-feedback-text-${style}-${
+    `w-1405 cursor-pointer flex items-center justify-between rounded-b font-primary font-medium border border-feedback-border-${style}-subtle bg-interactive-background-${style}-subtle hover:bg-feedback-background-${style}-normal text-feedback-text-${style}-${
       colorDepthMapping[style][0]
     }`,
     {

@@ -7,6 +7,7 @@ import {
   CircleDotIcon,
   CircleIcon,
   CommandKeyIcon,
+  IIconProps,
   SquareCheckIcon,
   SquareIcon,
 } from '../icons';
@@ -67,6 +68,18 @@ function DropdownMenuGroup({
   );
 }
 
+type DropdownMenuItemProps = React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
+  inset?: boolean;
+  variant?: 'default' | 'destructive';
+  name?: string;
+  leadingIcon?: React.ComponentType<IIconProps>;
+  trailingIcon?: React.ComponentType<IIconProps>;
+  trailingText?: string;
+  shortcutKey?: string;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  disabled?: boolean;
+}
+
 function DropdownMenuItem({
   className,
   inset,
@@ -78,11 +91,7 @@ function DropdownMenuItem({
   shortcutKey,
   onClick,
   disabled=false,
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
-  inset?: boolean;
-  variant?: 'default' | 'destructive';
-}) {
+}: DropdownMenuItemProps) {
   return (
     <DropdownMenuPrimitive.Item
       data-slot="dropdown-menu-item"
@@ -101,7 +110,7 @@ function DropdownMenuItem({
         <div className={`flex items-center mr-2`}>
           {leadingIcon && (
             <div className={`mr-1`}>
-              {leadingIcon({
+              {React.createElement(leadingIcon as any, {
                 size: 'medium',
                 className: `fill-interactive-icon-${variant === "destructive" ? 'destructive' : 'gray'}-${disabled ? 'disabled' : 'subtle'}`,
               })}
@@ -132,7 +141,7 @@ function DropdownMenuItem({
             </div>
           )}
           {trailingIcon &&
-            trailingIcon({
+            React.createElement(trailingIcon as any, {
               size: 'medium',
               className: `fill-interactive-icon-gray-muted ml-05`,
             })}
@@ -140,6 +149,15 @@ function DropdownMenuItem({
       </div>
     </DropdownMenuPrimitive.Item>
   );
+}
+
+type DropdownMenuCheckboxItemProps = React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem> & {
+  name?: string;
+  checked?: boolean;
+  trailingIcon?: React.ComponentType<IIconProps>;
+  trailingText?: string;
+  onSelect?: () => void;
+  disabled?: boolean;
 }
 
 function DropdownMenuCheckboxItem({
@@ -151,7 +169,7 @@ function DropdownMenuCheckboxItem({
   onSelect,
   disabled,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>) {
+}: DropdownMenuCheckboxItemProps) {
   return (
     <DropdownMenuItem
       name={name}
@@ -172,11 +190,16 @@ function DropdownMenuCheckboxItem({
       }
       trailingIcon={trailingIcon}
       trailingText={trailingText}
-      onClick={!disabled && onSelect}
+      onClick={!disabled ? onSelect : undefined}
       disabled={disabled}
       {...props}
     />
   );
+}
+
+type DropdownMenuRadioGroupProps = React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup> & {
+  value?: string;
+  onSelectionChange?: (value: string) => void;
 }
 
 function DropdownMenuRadioGroup({
@@ -184,27 +207,36 @@ function DropdownMenuRadioGroup({
   value,
   onSelectionChange,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
+  }: DropdownMenuRadioGroupProps) {
   return (
     <DropdownMenuPrimitive.RadioGroup
       data-slot="dropdown-menu-radio-group"
       onValueChange={(value) => {
-        alert(value);
-        onSelectionChange(value);
+        if (onSelectionChange) {
+          onSelectionChange(value);
+        }
       }}
       {...props}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
-          ? React.cloneElement(child, {
+          ? React.cloneElement(child as React.ReactElement<DropdownMenuRadioItemProps>, {
               selectedValue: value,
-              ...child.props,
-              onSelectionChange,
+              onSelectionChange: onSelectionChange,
             })
           : child
       )}
     </DropdownMenuPrimitive.RadioGroup>
   );
+}
+
+type DropdownMenuRadioItemProps = React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem> & {
+  name?: string;
+  trailingIcon?: React.ComponentType<IIconProps>;
+  trailingText?: string;
+  selectedValue?: string;
+  onSelectionChange?: (value: string) => void;
+  disabled?: boolean;
 }
 
 function DropdownMenuRadioItem({
@@ -217,15 +249,17 @@ function DropdownMenuRadioItem({
   disabled = false,
   value,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) {
+}: DropdownMenuRadioItemProps) {
   return (
     <DropdownMenuItem
       name={name}
       trailingIcon={trailingIcon}
       trailingText={trailingText}
-      value={value}
-      onClick={() => {
-        !disabled && onSelectionChange(value);
+      onClick={(event) => {
+        if (onSelectionChange) {
+          onSelectionChange(value);
+          event.preventDefault();
+        }
       }}
       disabled={disabled}
       leadingIcon={
@@ -302,6 +336,12 @@ function DropdownMenuSub({
   return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />;
 }
 
+type DropdownMenuSubTriggerProps = React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
+  inset?: boolean;
+  leadingIcon?: React.ComponentType<IIconProps>;
+  name?: string;
+}
+
 function DropdownMenuSubTrigger({
   className,
   inset,
@@ -309,9 +349,7 @@ function DropdownMenuSubTrigger({
   leadingIcon,
   name,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
-  inset?: boolean;
-}) {
+}: DropdownMenuSubTriggerProps) {
   return (
     <DropdownMenuPrimitive.SubTrigger
       data-slot="dropdown-menu-sub-trigger"

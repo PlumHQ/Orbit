@@ -25,22 +25,6 @@ const meta: Meta<typeof Sidebar> = {
   title: "Design System/Sidebar",
   component: Sidebar,
   tags: ["autodocs"],
-  argTypes: {
-    side: {
-      control: {
-        type: "select",
-        options: ["left", "right"],
-      },
-      description: "The side of the sidebar.",
-    },
-    variant: {
-      control: {
-        type: "select",
-        options: ["sidebar", "floating", "inset"],
-      },
-      description: "The variant of the sidebar.",
-    },
-  },
 };
 
 export default meta;

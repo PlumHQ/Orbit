@@ -50,7 +50,7 @@ const meta: Meta<typeof ActionableListItem> = {
         },
         badgeSize: {
             control: { type: 'select' },
-            options: ['large', 'medium', 'small'],
+            options: ['large', 'medium'],
             description: 'Size of the badge',
         },
         badgeVariant: {
@@ -111,7 +111,7 @@ type Story = StoryObj<typeof meta>;
 
 export const DefaultWithBadge: Story = {
     render: (args) => (
-        <div className="w-150 max-w-md">
+        <div>
             <ActionableListItem {...args} size={args.size} primaryText={args.primaryText} secondaryTexts={args.secondaryTexts} leadingAsset={args.leadingAsset} tertiaryText={args.tertiaryText} variant={args.variant} behaviour={args.behaviour} badgeText={args.badgeText} badgeSize={args.badgeSize} badgeVariant={args.badgeVariant} badgeStyle={args.badgeStyle} />
         </div>
     ),
@@ -133,7 +133,7 @@ export const DefaultWithBadge: Story = {
 
 export const DefaultWithCallToAction: Story = {
     render: (args) => (
-        <div className="w-150 max-w-md">
+        <div>
             <ActionableListItem {...args} size={args.size} primaryText={args.primaryText} secondaryTexts={args.secondaryTexts} leadingAsset={args.leadingAsset} tertiaryText={args.tertiaryText} variant={args.variant} behaviour={args.behaviour} />
         </div>
     ),
@@ -155,7 +155,7 @@ export const DefaultWithCallToAction: Story = {
 
 export const DefaultWithSelectable: Story = {
     render: (args) => (
-        <div className="w-150 max-w-md">
+        <div>
             <ActionableListItem {...args} size={args.size} primaryText={args.primaryText} secondaryTexts={args.secondaryTexts} leadingAsset={args.leadingAsset} tertiaryText={args.tertiaryText} variant={args.variant} behaviour={args.behaviour} />
         </div>
     ),
@@ -190,9 +190,10 @@ export const AllSizes: Story = {
 export const AllVariants: Story = {
     render: (args) => (
         <div className="space-y-2 w-150 max-w-md">
-            <ActionableListItem variant="primary" size="medium" behaviour="click" primaryText="Primary" secondaryTexts={["Primary variant"]} leadingAsset={HealthInsuraceIllustration} leafletLeadingText='Leading' leafletTrailingText='Trailing'  tertiaryText="Primary tertiary" />
-            <ActionableListItem variant="secondary" callToAction='Read more' size="medium" behaviour="select" primaryText="Secondary" secondaryTexts={["Secondary variant"]} leadingAsset={HealthInsuraceIllustration} leafletLeadingText='Leading'  tertiaryText="Secondary tertiary" />
-            <ActionableListItem variant="primary" size="medium" behaviour="click" primaryText="Primary Alt" secondaryTexts={["Primary alt variant"]} leadingAsset={HealthInsuraceIllustration} leafletLeadingText='Leading' leafletTrailingText='Trailing'  tertiaryText="Primary alt tertiary" />
+            <ActionableListItem variant="primary" callToAction='Read more' size="medium" behaviour="click" primaryText="Primary" secondaryTexts={["Primary variant"]} leadingAsset={HealthInsuraceIllustration} leafletLeadingText='Leading' leafletTrailingText='Trailing'  tertiaryText="Primary tertiary" />
+            <ActionableListItem variant="secondary" callToAction='Read more' size="medium" behaviour="click" primaryText="Secondary" secondaryTexts={["Secondary variant"]} leadingAsset={HealthInsuraceIllustration} leafletLeadingText='Leading'  tertiaryText="Secondary tertiary" />
+            <ActionableListItem variant="primary" badgeText='Badge' size="medium" behaviour="click" primaryText="Primary Alt" secondaryTexts={["Primary alt variant"]} leadingAsset={HealthInsuraceIllustration} leafletLeadingText='Leading' leafletTrailingText='Trailing'  tertiaryText="Primary alt tertiary" />
+            <ActionableListItem variant="primary" badgeText='Badge' size="medium" behaviour="select" primaryText="Primary Alt" secondaryTexts={["Primary alt variant"]} leadingAsset={HealthInsuraceIllustration} leafletLeadingText='Leading' leafletTrailingText='Trailing'  tertiaryText="Primary alt tertiary" />
         </div>
     ),
     args: {
