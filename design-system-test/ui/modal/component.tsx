@@ -4,7 +4,7 @@ import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 
 import { cn } from '../utilities';
-import { CrossCloseIcon } from '../icons';
+import { CrossCloseIcon, LeftArrowIcon, LeftChevronIcon } from '../icons';
 import '../../styles/output.css';
 import '@fontsource/inter';
 import { Button } from "../button";
@@ -80,9 +80,9 @@ function DialogContent({
   showFooterOverFlowGradient?: boolean;
 }) {
   const sizeClasses = {
-    small: "max-w-120 max-h-120",
-    medium: "max-w-140 max-h-140",
-    large: "max-w-160 max-h-160"
+    small: "max-w-120 max-h-90",
+    medium: "max-w-140 max-h-160",
+    large: "max-h-[90vh] max-w-[95vw]"
   };
 
   return (
@@ -114,24 +114,30 @@ function DialogHeader({
   anchorAsset,
   onCloseClick,
   showHeaderOverFlowGradient: propShowHeaderOverFlowGradient,
+  centerAlignHeader,
+  showBackButton,
+  onBackArrowClick,
 }: {
   headerText: string
   anchorAsset?: React.FC
   onCloseClick: () => void
   showHeaderOverFlowGradient?: boolean
+  centerAlignHeader?: boolean
+  showBackButton?: boolean
+  onBackArrowClick?: () => void
 }) {
   const { showHeaderOverFlowGradient: contextShowHeaderOverFlowGradient } = useModalContext();
   const showHeaderOverFlowGradient = propShowHeaderOverFlowGradient ?? contextShowHeaderOverFlowGradient;
   return (
-    <div data-slot="dialog-header" className="flex flex-col font-primary text-2xl font-semibold space-y-1.5 text-left pt-8 px-9 flex-shrink-0">
-      <div
+    <div data-slot="dialog-header" className={cn("flex flex-col font-primary text-2xl font-semibold space-y-1.5 text-left pt-8 px-9 flex-shrink-0", showHeaderOverFlowGradient ? "" : "mb-4")}>
+      {anchorAsset && <div
         className="flex justify-between"
       >
         <div className="flex items-center text-surface-text-gray-normal">
           {anchorAsset ? React.createElement(anchorAsset as React.FC<{ size: string, className: string }>, {
             size: "quadrupleExtraLarge",
             className: "fill-surface-icon-gray-subtle",
-          }) : headerText}
+          }) : ''}
         </div>
         <div>
           <IconButton
@@ -141,7 +147,30 @@ function DialogHeader({
             onClick={onCloseClick}
           />
         </div>
-      </div>
+      </div>}
+      {headerText && <div
+        className="flex justify-between"
+      >
+        {centerAlignHeader && <div>
+          {showBackButton && <IconButton
+            icon={LeftArrowIcon}
+            size="large"
+            color="gray"
+            onClick={onBackArrowClick}
+          />}
+        </div>}
+        <div className="flex items-center text-surface-text-gray-normal">
+          {headerText}
+        </div>
+        {!anchorAsset && <div>
+          <IconButton
+            icon={CrossCloseIcon}
+            size="large"
+            color="gray"
+            onClick={onCloseClick}
+          />
+        </div>}
+      </div>}
       {showHeaderOverFlowGradient && <div className="flex flex-col bg-gradient-to-b from-transparent via-white/60 to-white h-10 relative" />}
     </div>
   )
@@ -300,7 +329,7 @@ function ButtonGroup({ style = "simple", orientation = "horizontal", onFirstButt
             styleVariant="gray"
             size="large"
             label={linkButtonLabel}
-            onClick={() => linkButtonClick()}
+            onClick={linkButtonClick ? () => linkButtonClick() : ()=>{}}
           />} 
         </div>
       )}

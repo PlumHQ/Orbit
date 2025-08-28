@@ -46,7 +46,6 @@ export const Default: Story = {
         {...args} 
         selectedValue={activeTab}
         onValueChange={setActiveTab}
-        className="w-96"
       >
         <TabsList {...args}>
           <TabsTrigger selectedValue={activeTab} onValueChange={setActiveTab} value="tab1" name="First Tab" />

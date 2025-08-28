@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, VariantProps } from "class-variance-authority"
-import { ChevronDown, ChevronUp, IIconProps, LeftChevronIcon } from "../icons"
+import { ChevronDown, ChevronUp, EllipsisVerticalIcon, FileText, IIconProps, LeftChevronIcon, LogoutIcon, SettingsIcon, StarIcon, UserIcon } from "../icons"
 import { Counter } from "../counter"
 import { cn } from "../utilities"
 import { Button } from "../button"
@@ -16,6 +16,8 @@ import {
 } from "../tooltip"
 import "../../styles";
 import { IconButton } from "../iconButton"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../dropdownMenu"
+import { Divider } from "../divider"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -35,7 +37,7 @@ type SidebarContextProps = {
 
 interface SidebarMenuItem {
   title: string
-  icon: () => React.FC<IIconProps> | null
+  icon?: () => React.FC<IIconProps> | null
   url: string
   children?: {
     title: string
@@ -44,6 +46,7 @@ interface SidebarMenuItem {
   }[]
   expanded?: boolean
   counter?: number
+  dropdownChildren?: boolean
   onClick?: () => void
 }
 
@@ -186,7 +189,7 @@ function Sidebar({
     return (
         <div className="flex flex-row">   
             <div
-                className={cn("group peer text-gray-900", state === "collapsed" ? "w-18" : "w-60")}
+                className={cn("group peer text-gray-900 animate-smart-layout", state === "collapsed" ? "w-18" : "w-60")}
                 data-state={state}
                 data-collapsible={state === "collapsed" ? collapsible : ""}
                 data-variant={variant}
@@ -197,7 +200,7 @@ function Sidebar({
                 <div
                     data-slot="sidebar-gap"
                     className={cn(
-                        "relative h-screen hidden bg-transparent transition-[width] duration-200 ease-linear",
+                        "relative h-screen hidden bg-transparent animate-smart-layout",
                         "group-data-[collapsible=offcanvas]:w-0",
                         "group-data-[side=right]:rotate-180",
                         variant === "floating" || variant === "inset"
@@ -208,7 +211,7 @@ function Sidebar({
                 <div
                     data-slot="sidebar-container"
                     className={cn(
-                        "fixed flex py-2 inset-y-0 z-10 h-screen overflow-ellipsis transition-[left,right,width] duration-200 ease-linear md:flex border-r border-surface-border-beige-subtle bg-surface-background-beige-subtle w-fit h-screen overflow-scroll",
+                        "fixed flex py-2 inset-y-0 z-10 h-screen overflow-ellipsis animate-smart-layout animate-smart-position md:flex border-r border-surface-border-beige-subtle bg-surface-background-beige-subtle w-fit h-screen overflow-scroll",
                         side === "left"
                             ? "left-0 group-data-[collapsible=offcanvas]:-left-64"
                             : "right-0 group-data-[collapsible=offcanvas]:-right-64",
@@ -234,6 +237,48 @@ function Sidebar({
     )
 }
 
+function SidebarProfileDropdown({isOpen, onClose}: {isOpen: boolean, onClose: () => void}) {
+  return (
+    // <div className="dropdown-menu-profile absolute top-0 left-full ml-2 z-50">
+      <DropdownMenu open={isOpen} onOpenChange={onClose}>
+        <DropdownMenuTrigger asChild>
+          <div className="w-1 h-1 opacity-0 pointer-events-none" />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent side="right" align="start" sideOffset={8}>
+          <DropdownMenuLabel>Personal</DropdownMenuLabel>
+          <DropdownMenuItem 
+            name="Benefit" 
+            leadingIcon={StarIcon}
+          />
+          <DropdownMenuItem 
+            name="Claims" 
+            leadingIcon={FileText}
+          />
+          <DropdownMenuItem 
+            name="Profile" 
+            leadingIcon={UserIcon}
+          />
+          <DropdownMenuItem 
+            name="Settings" 
+            leadingIcon={SettingsIcon}
+          />
+          <DropdownMenuSeparator />
+          <DropdownMenuItem 
+            name="Logout" 
+            variant="destructive" 
+            leadingIcon={LogoutIcon}
+          />
+          <DropdownMenuItem 
+            name="Logout of all devices" 
+            variant="destructive" 
+            leadingIcon={LogoutIcon}
+          />
+        </DropdownMenuContent>
+      </DropdownMenu>
+    // </div>
+  )
+}
+
 function SidebarTrigger({
   onClick,
   ...props
@@ -243,28 +288,39 @@ function SidebarTrigger({
 
 
   return (
-    <div className="fixed top-50 cursor-pointer" onClick={toggleSidebar} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-      {state === "expanded" ?
-        isHovered ? (<div className="flex flex-row items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="22" viewBox="0 0 10 22" fill="none">
-            <path d="M6.93848 0.5C8.24573 0.5 9.07528 1.901 8.44629 3.04688L4.3457 10.5117L8.55273 18.9775C9.12927 20.1381 8.28521 21.5 6.98926 21.5C6.32655 21.4999 5.72073 21.1247 5.42578 20.5312L0.755859 11.1328C0.555411 10.7291 0.56527 10.2526 0.782227 9.85742L5.43164 1.3916C5.73362 0.841797 6.31122 0.500172 6.93848 0.5Z" fill="#5B5752" stroke="#5B5752" />
-          </svg>
-          <div className="bg-popup-background-normal text-popup-text-intense font-primary text-sm font-medium rounded-25 px-3 py-2">Collapse Sidebar</div>
-        </div>) : (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M10.0615 22.5C8.75427 22.5 7.92472 21.099 8.55371 19.9531L12.6543 12.4883L8.44726 4.02246C7.87072 2.86186 8.71479 1.5 10.0107 1.5C10.6734 1.50012 11.2793 1.87529 11.5742 2.46875L16.2441 11.8672C16.4446 12.2709 16.4347 12.7474 16.2178 13.1426L11.5684 21.6084C11.2664 22.1582 10.6888 22.4998 10.0615 22.5Z" fill="#928B82" stroke="#928B82" />
-        </svg>) 
-        :
-      isHovered ? 
-      <div className="flex flex-row items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="22" viewBox="0 0 10 22" fill="none">
-          <path d="M3.06152 21.5C1.75427 21.5 0.924718 20.099 1.55371 18.9531L5.6543 11.4883L1.44726 3.02246C0.870724 1.86186 1.71479 0.500001 3.01074 0.500001C3.67345 0.500123 4.27926 0.875285 4.57422 1.46875L9.24414 10.8672C9.44459 11.2709 9.43473 11.7474 9.21777 12.1426L4.56836 20.6084C4.26638 21.1582 3.68878 21.4998 3.06152 21.5Z" fill="#5B5752" stroke="#5B5752"/>
-          </svg>
-          <div className="bg-popup-background-normal text-popup-text-intense font-primary text-sm font-medium rounded-25 px-3 py-2">Expand Sidebar</div>
-        </div>
-      : (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="10" y="2" width="4" height="20" rx="2" fill="#928B82" />
-      </svg>)
+    <div className={cn("fixed cursor-pointer ml-3-negative animate-smart-transform","top-50")} onClick={()=>{setIsHovered(false); toggleSidebar()}} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          {state === "expanded" ?
+            <div className="flex flex-row items-center animate-smart-transform h-11 text-center">
+              <svg className="animate-smart-colors animate-smart-opacity animate-smart-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  className="animate-smart-colors"
+                  d={isHovered ? "M6.93848 0.5C8.24573 0.5 9.07528 1.901 8.44629 3.04688L4.3457 10.5117L8.55273 18.9775C9.12927 20.1381 8.28521 21.5 6.98926 21.5C6.32655 21.4999 5.72073 21.1247 5.42578 20.5312L0.755859 11.1328C0.555411 10.7291 0.56527 10.2526 0.782227 9.85742L5.43164 1.3916C5.73362 0.841797 6.31122 0.500172 6.93848 0.5Z" : "M14 20C14 21.1046 13.1045 22 12 22C10.8954 22 10 21.1046 10 20L10 12.5L10 3.99998C10 2.89542 10.8954 2 12 2C13.1045 2 14 2.89544 14 4.00001L13.9998 12.5L14 20Z"}
+                  fill={isHovered ? "#5B5752" : "#928B82"}
+                  stroke={isHovered ? "#5B5752" : "#928B82"}
+                />
+              </svg>
+              {isHovered && <div className="bg-popup-background-normal text-popup-text-intense font-primary text-sm font-medium rounded-25 px-3 py-2 animate-smart-transform">Collapse Sidebar</div>}
+            </div>
+            :
+          <div className="flex flex-row items-center animate-smart-transform h-11 text-center">
+            <svg className="animate-smart-colors animate-smart-opacity animate-smart-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path 
+                className="animate-smart-colors" 
+                d="M10.0615 22.5C8.75427 22.5 7.92472 21.099 8.55371 19.9531L12.6543 12.4883L8.44726 4.02246C7.87072 2.86186 8.71479 1.5 10.0107 1.5C10.6734 1.50012 11.2793 1.87529 11.5742 2.46875L16.2441 11.8672C16.4446 12.2709 16.4347 12.7474 16.2178 13.1426L11.5684 21.6084C11.2664 22.1582 10.6888 22.4998 10.0615 22.5Z" 
+                fill={isHovered ? "#5B5752" : "#928B82"} 
+                stroke={isHovered ? "#5B5752" : "#928B82"}
+              />
+            </svg>
+            {isHovered &&<div className="bg-popup-background-normal text-popup-text-intense font-primary text-sm font-medium rounded-25 px-3 py-2 animate-smart-transform">Expand Sidebar</div>}
+          </div>
       }
+      </TooltipTrigger>
+      {/* <TooltipContent position="right" align="center" headerText={state === "expanded" ? "Collapse Sidebar" : "Expand Sidebar"}>
+        {state === "expanded" ? "Collapse Sidebar" : "Expand Sidebar"}
+      </TooltipContent> */}
+      </Tooltip>
     </div>
   )
 }
@@ -422,7 +478,7 @@ function SidebarGroupContent({
     <div
       data-slot="sidebar-group-content"
       data-sidebar="group-content"
-      className={cn("w-full text-sm", className)}
+      className={cn("w-full text-sm mt-3 p-2", className)}
       {...props}
     />
   )
@@ -479,6 +535,7 @@ function SidebarMenuButton({
   variant = "default",
   size = "default",
   tooltip,
+  tabIndex = 0,
   className,
   ...props
 }: React.ComponentProps<"button"> & {
@@ -486,10 +543,12 @@ function SidebarMenuButton({
   asChild?: boolean
   isActive?: boolean
   tooltip?: string | React.ComponentProps<typeof TooltipContent>
+  tabIndex?: number
 } & VariantProps<typeof sidebarMenuButtonVariants>) {
   const Comp = asChild ? Slot : "button"
-  const { isMobile, state } = useSidebar()
-
+  const { isMobile, state } = useSidebar();
+  const [isHovered, setIsHovered] = React.useState(false);
+  const [openDropdown, setOpenDropdown] = React.useState(false);
   
 
   const button = (
@@ -498,15 +557,23 @@ function SidebarMenuButton({
       data-sidebar="menu-button"
       data-size={size}
       data-active={isActive}
-      className={cn("flex flex-row justify-between items-center gap-2  hover:bg-surface-background-beige-normal rounded-md px-6 py-2 cursor-pointer")}
+      className={cn("flex flex-row focus-visible:outline-none focus-visible:plum-focus justify-between items-center gap-2  hover:bg-surface-background-beige-normal rounded-md px-4 py-2 cursor-pointer")}
+      tabIndex={tabIndex}
       {...props as any}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => {
+        setIsHovered(false);
+        item.dropdownChildren && setOpenDropdown(true);
+        item.onClick?.();
+      }}
     >
       <div className="flex flex-row items-center gap-2">
         {item.icon && (() => {
           const IconComponent = item.icon();
           return IconComponent ? <div className="flex items-center justify-center">
             <IconComponent color="gray" size="extraLarge" />
-            {item.counter && state === "collapsed" && <svg className="absolute top-1 right-4" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            {item.counter && state === "collapsed" && <svg className="absolute top-1 right-2" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
               <circle cx="6" cy="6" r="5" fill="#DA243E" stroke="#F9F8F6" stroke-width="2" />
             </svg>}
           </div> : null;
@@ -517,6 +584,10 @@ function SidebarMenuButton({
         {item.expanded ? <ChevronUp color="gray" size="large" /> : <ChevronDown color="gray" size="large" />}
       </div>}
       {item.counter && state === "expanded" && <Counter value={item.counter} size="medium" styleVariant="information" />}
+      {item.dropdownChildren && state === "expanded" && isHovered && <EllipsisVerticalIcon color="gray" size="large" />}
+      {item.dropdownChildren && state === "expanded" && openDropdown && (
+        <SidebarProfileDropdown isOpen={openDropdown} onClose={() => setOpenDropdown(false)} />
+      )}
     </div>
   )
 

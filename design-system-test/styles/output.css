@@ -2,6 +2,102 @@
 ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
 */
 
+:root {
+  /* PRIMITIVES - COLORS */
+  --color-plumRed-50: #fef3f2ff;
+  --color-plumRed-100: #fee5e5ff;
+  --color-plumRed-200: #fccfd1ff;
+  --color-plumRed-300: #faa7acff;
+  --color-plumRed-400: #f6767fff;
+  --color-plumRed-500: #ee4f5eff;
+  --color-plumRed-600: #da243eff;
+  --color-plumRed-700: #b71933ff;
+  --color-plumRed-800: #9a1731ff;
+  --color-plumRed-900: #81152aff;
+  --color-plumRed-950: #470b17ff;
+
+  --color-brandPurple-50: #faf5ffff;
+  --color-brandPurple-100: #f3e8ffff;
+  --color-brandPurple-200: #e9d5ffff;
+  --color-brandPurple-300: #d8b4feff;
+  --color-brandPurple-400: #c084fcff;
+  --color-brandPurple-500: #a855f7ff;
+  --color-brandPurple-600: #9333eaff;
+  --color-brandPurple-700: #7c3aedff;
+  --color-brandPurple-800: #6b21a8ff;
+  --color-brandPurple-900: #581c87ff;
+  --color-brandPurple-950: #3b0764ff;
+
+  --color-black-50: #f6f6f6ff;
+  --color-black-100: #e7e7e7ff;
+  --color-black-200: #d1d1d1ff;
+  --color-black-300: #b0b0b0ff;
+  --color-black-400: #888888ff;
+  --color-black-500: #6d6d6dff;
+  --color-black-600: #5d5d5dff;
+  --color-black-700: #4f4f4fff;
+  --color-black-800: #454545ff;
+  --color-black-900: #3d3d3dff;
+  --color-black-950: #111111ff;
+
+  --color-blue-50: #eff6ffff;
+  --color-blue-100: #dbeafeff;
+  --color-blue-200: #bfdbfeff;
+  --color-blue-300: #93c5fdff;
+  --color-blue-400: #60a5faff;
+  --color-blue-500: #3b82f6ff;
+  --color-blue-600: #2563ebff;
+  --color-blue-700: #1d4eddff;
+  --color-blue-800: #1e40afff;
+  --color-blue-900: #1e3a8aff;
+  --color-blue-950: #172554ff;
+
+  --color-white-50: #fdfdfdff;
+  --color-white-100: #fcfcfcff;
+  --color-white-200: #fafafaff;
+  --color-white-300: #f8f8f8ff;
+  --color-white-400: #f0f0f0ff;
+  --color-white-500: #ffffffff;
+  --color-white-600: #e8e8e8ff;
+  --color-white-700: #d0d0d0ff;
+  --color-white-800: #b8b8b8ff;
+  --color-white-900: #a0a0a0ff;
+  --color-white-950: #161616ff;
+  --color-white-transparent: #ffffff00;
+  --color-white-a50: #ffffff17;
+  --color-white-a100: #ffffff52;
+  --color-white-a200: #ffffff7a;
+  --color-white-a300: #ffffffa3;
+  --color-white-a400: #ffffffcc;
+  --color-white-a450: #ffffffe0;
+
+  /* Interactive Background Colors */
+  --color-interactive-background-white-normal: #ffffffff;
+  --color-interactive-background-white-transparent: #ffffff00;
+  --color-interactive-background-white-highlighted: #ffffffcc;
+  --color-interactive-background-white-faded: #ffffff2e;
+
+  /* RADIUS */
+  --radius-0: 0px;
+  --radius-05: 2px;
+  --radius-1: 4px;
+  --radius-15: 6px;
+  --radius-2: 8px;
+  --radius-25: 10px;
+  --radius-3: 12px;
+  --radius-4: 16px;
+  --radius-6: 24px;
+  --radius-8: 9999px;
+  --radius-full: 9999px;
+
+  /* TYPOGRAPHY */
+  --font-family-primary: 'Inter';
+  --font-family-secondary: 'Chromatica';
+
+  --font-size-xs: 12px;
+  --line-height-xs: 16px;
+}
+
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -699,8 +795,24 @@ video {
   top: -40px;
 }
 
+.top-49 {
+  top: 49%;
+}
+
+.top-495 {
+  top: -49.5%;
+}
+
+.top-48 {
+  top: 48%;
+}
+
 .top-50 {
   top: 50%;
+}
+
+.left-full {
+  left: 100%;
 }
 
 .left-0 {
@@ -721,6 +833,10 @@ video {
 
 .right-4 {
   right: 16px;
+}
+
+.right-2 {
+  right: 8px;
 }
 
 .top-8-negative {
@@ -748,6 +864,18 @@ video {
 }
 .z-1 {
   z-index: 1;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .order-first {
@@ -1065,6 +1193,10 @@ video {
   height: 2.5rem;
 }
 
+.h-11 {
+  height: 44px;
+}
+
 .h-full {
   height: 100%;
 }
@@ -1099,6 +1231,12 @@ video {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+
+
+.max-h-90 {
+  max-height: 22.5rem;
 }
 
 .max-h-120 {
@@ -1388,6 +1526,8 @@ video {
 .animate-none {
   animation: none;
 }
+
+
 
 .animate-pulse {
   animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -3801,6 +3941,10 @@ video {
   margin-left: 8px;
 }
 
+.ml-3-negative {
+  margin-left: -12px;
+}
+
 .ml-3 {
   margin-left: 12px;
 }
@@ -4952,4 +5096,139 @@ video {
 
 .\[\&_svg\]\:shrink-0 svg {
   flex-shrink: 0;
+}
+
+/* Custom utility for arbitrary max-height values */
+.max-h-\[480px\] {
+  max-height: 480px;
+}
+
+.max-h-\[90vh\] {
+  max-height: 90vh;
+}
+
+.max-h-\[50vh\] {
+  max-height: 50vh;
+}
+
+.max-h-\[70vh\] {
+  max-height: 70vh;
+}
+
+.max-h-\[80vh\] {
+  max-height: 80vh;
+}
+
+.max-h-\[95vh\] {
+  max-height: 95vh;
+}
+
+.max-h-\[600px\] {
+  max-height: 600px;
+}
+
+.max-h-\[400px\] {
+  max-height: 400px;
+}
+
+.max-h-\[320px\] {
+  max-height: 320px;
+}
+
+.max-h-\[500px\] {
+  max-height: 500px;
+}
+
+.max-w-\[95vw\] {
+  max-width: 95vw;
+}
+
+/* Height arbitrary values */
+.h-\[480px\] {
+  height: 480px;
+}
+
+.h-\[90vh\] {
+  height: 90vh;
+}
+
+.h-\[50vh\] {
+  height: 50vh;
+}
+
+.h-\[70vh\] {
+  height: 70vh;
+}
+
+.h-\[80vh\] {
+  height: 80vh;
+}
+
+/* Width arbitrary values */
+.w-\[480px\] {
+  width: 480px;
+}
+
+.w-\[90vw\] {
+  width: 90vw;
+}
+
+.w-\[50vw\] {
+  width: 50vw;
+}
+
+.w-\[70vw\] {
+  width: 70vw;
+}
+
+.w-\[80vw\] {
+  width: 80vw;
+}
+
+/* Figma Smart Animate Utilities */
+.animate-smart {
+  transition: all 300ms linear;
+}
+
+.animate-smart-opacity {
+  transition: opacity 300ms linear;
+}
+
+.animate-smart-opacity path,
+.animate-smart-opacity rect,
+.animate-smart-opacity circle,
+.animate-smart-opacity polygon {
+  transition: opacity 300ms linear;
+}
+
+/* Staggered opacity animations to prevent overlap */
+.animate-smart-opacity-delayed {
+  transition: opacity 150ms linear 300ms;
+}
+
+.animate-smart-opacity-immediate {
+  transition: opacity 150ms linear;
+}
+
+.animate-smart-transform {
+  transition: transform 300ms linear;
+}
+
+.animate-smart-colors {
+  transition: background-color 300ms linear, border-color 300ms linear, color 300ms linear, fill 300ms linear, stroke 300ms linear;
+}
+
+.animate-smart-colors path,
+.animate-smart-colors rect,
+.animate-smart-colors circle,
+.animate-smart-colors polygon {
+  transition: fill 300ms linear, stroke 300ms linear, opacity 300ms linear;
+}
+
+.animate-smart-layout {
+  transition: width 300ms linear, height 300ms linear, padding 300ms linear, margin 300ms linear;
+}
+
+.animate-smart-position {
+  transition: top 300ms linear, left 300ms linear, right 300ms linear, bottom 300ms linear;
 }

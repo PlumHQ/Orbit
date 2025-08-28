@@ -46,11 +46,14 @@ import GraduationCapIcon from './graduationCapIcon';
 import MessageQuestionIcon from './messageQuestionIcon';
 import SettingsIcon from './settingsIcon';
 import ChevronUp from './ChevronUp';
+import EllipsisVerticalIcon from './ellipsisVertical';
+import LogoutIcon from './logoutIcon';
 
 export type IIconProps = {
   color?: string;
   className?: string;
   size?: string;
+  disabled?: boolean;
 };
 
 export {
@@ -102,4 +105,6 @@ export {
   MessageQuestionIcon,
   SettingsIcon,
   ChevronUp,
+  EllipsisVerticalIcon,
+  LogoutIcon,
 };

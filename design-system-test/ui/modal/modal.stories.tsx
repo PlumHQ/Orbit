@@ -3,7 +3,7 @@ import React from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, DialogBody } from './index';
 import { Button } from '../button';
 import { Card } from '../cards';
-import { CrossCloseIcon } from '../icons';
+import { CrossCloseIcon, ListTreeIcon } from '../icons';
 import { Skeleton } from '../skeleton';
 
 const meta: Meta<typeof Dialog> = {
@@ -190,7 +190,7 @@ export const HorzinatalButtons: Story = {
           />
         </DialogTrigger>
         <DialogContent size={args.size} showHeaderOverFlowGradient={args.showHeaderOverFlowGradient} showFooterOverFlowGradient={args.showFooterOverFlowGradient}>
-          <DialogHeader headerText="Choose Your Plan" onCloseClick={() => setIsOpen(false)} />
+          <DialogHeader centerAlignHeader={args.centerAlignHeader} showBackButton={args.showBackButton} headerText="Choose Your Plan" onCloseClick={() => setIsOpen(false)} onBackArrowClick={args.onBackArrowClick} />
           <DialogBody
             bodyText="This will end the current addition request you have requested and will redirect you back to the homescreen.This will end the current addition request you have requested and will redirect you back to the homescreen. This will end the current addition request you have requested and will redirect you back to the homescreen.This will end the current addition request you have requested and will redirect you back to the homescreen. This will end the current addition request you have requested and will redirect you back to the homescreen.This will end the current addition request you have requested and will redirect you back to the homescreen. This will end the current addition request you have requested and will redirect you back to the homescreen.This will end the current addition request you have requested and will redirect you back to the homescreen."
             bodySlot={
@@ -228,5 +228,8 @@ export const HorzinatalButtons: Story = {
     buttonGroupLinkButtonClick: () => {},
     buttonGroupAlignment: 'right',
     showConfirmationCheckbox: true,
+    centerAlignHeader: true,
+    showBackButton: true,
+    onBackArrowClick: () => {},
   },
 };

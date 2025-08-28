@@ -123,7 +123,8 @@ function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       },
       onClick: () => {
         console.log("Aditya Singh");
-      }
+      },
+      dropdownChildren: true,
     }
   ])
   return (

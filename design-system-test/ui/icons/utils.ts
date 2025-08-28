@@ -1,4 +1,4 @@
-export const sizeMap = {
+export const sizeMap: Record<string, number> = {
   extraLarge: 24,
   large: 20,
   medium: 16,

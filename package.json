@@ -1,7 +1,7 @@
 {
-  "name": "@plumhq/design-system",
+  "name": "@plumhq/Orbit",
   "version": "1.0.0",
-  "description": "Plum's comprehensive design system for healthcare applications",
+  "description": "Plum's comprehensive Orbit system for healthcare applications",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -23,14 +23,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/AdityaPlum/design-system.git"
+    "url": "https://github.com/PlumHQ/Orbit.git"
   },
-  "homepage": "https://github.com/AdityaPlum/design-system#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "@plumhq:registry": "https://npm.pkg.github.com"
+  },
+  "homepage": "https://github.com/PlumHQ/Orbit#readme",
   "bugs": {
-    "url": "https://github.com/AdityaPlum/design-system/issues"
+    "url": "https://github.com/PlumHQ/Orbit/issues"
   },
   "author": "Plum Team <contact@plumhq.com>",
   "keywords": [
+    "Orbit",
     "design-system",
     "react",
     "typescript",
@@ -40,9 +45,11 @@
     "plum"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "npm run build:css && vite build",
+    "build:css": "tailwindcss -i ./design-system-test/styles/globals.css -o ./design-system-test/styles/output.css --watch=false",
     "build:types": "tsc --project tsconfig.build.json",
     "dev": "vite",
+    "dev:css": "tailwindcss -i ./design-system-test/styles/globals.css -o ./design-system-test/styles/output.css --watch",
     "test": "vitest",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "storybook": "storybook dev -p 6006",
@@ -84,9 +91,12 @@
     "@typescript-eslint/eslint-plugin": "^8.40.0",
     "@typescript-eslint/parser": "^8.40.0",
     "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.33.0",
     "glob": "^11.0.3",
+    "postcss": "^8.5.6",
     "storybook": "^8.6.14",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.9.2",
     "vite": "^5.4.19",
     "vitest": "^3.2.4"
