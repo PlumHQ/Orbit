@@ -11,7 +11,7 @@ ADD . /usr/src/app
 RUN rm -f .env*
 
 # Expose the listening port
-EXPOSE 8080
+EXPOSE 6006
 
 # Define startup command..
 CMD ["npm", "start"]
