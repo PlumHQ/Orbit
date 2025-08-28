@@ -19,7 +19,11 @@ RUN npm ci
 # Build Storybook for production
 RUN npm run build-storybook
 
-# Expose port 80 (nginx default)
-EXPOSE 6006
+# Install serve for static file serving
+RUN npm install -g serve
 
-CMD ["npm", "run", "storybook:docker"]
+# Expose port 80 for production
+EXPOSE 80
+
+# Serve static build with CORS support
+CMD ["serve", "-s", "storybook-static", "-l", "80", "--cors"]

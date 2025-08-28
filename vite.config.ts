@@ -6,6 +6,15 @@ import { glob } from 'glob'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    host: '0.0.0.0',
+    port: 6006,
+    allowedHosts: [
+      'orbit.plumhq.com',
+      'localhost',
+      '127.0.0.1'
+    ]
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
