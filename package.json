@@ -52,7 +52,8 @@
     "changeset:version": "changeset version",
     "changeset:publish": "changeset publish",
     "prepare": "npm run build",
-    "release": "npm run build && changeset publish"
+    "release": "npm run build && changeset publish",
+    "storybook:docker": "storybook dev -p 6006 --host 0.0.0.0 --no-open"
   },
   "private": false,
   "dependencies": {

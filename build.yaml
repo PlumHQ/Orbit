@@ -1,0 +1,91 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-south1-docker.pkg.dev/plum-vpc-prod/plum-docker-repo/orbit:$SHORT_SHA",
+        "-f",
+        "Dockerfile",
+        ".",
+      ]
+  # Trivy Vulnerability Scan
+  - name: "aquasec/trivy:latest"
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        trivy image --scanners vuln --severity CRITICAL,HIGH asia-south1-docker.pkg.dev/plum-vpc-prod/plum-docker-repo/orbit:$SHORT_SHA || true
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "asia-south1-docker.pkg.dev/plum-vpc-prod/plum-docker-repo/orbit:$SHORT_SHA",
+      ]
+  # Clone manifests repo, update patch.yaml files, and create & merge PR
+  - name: "alpine/git"
+    id: "clone_patch_pr_merge"
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        set -e
+
+        apk add --no-cache jq curl
+
+        git clone https://${_GITHUB_USERNAME}:${_GITHUB_TOKEN}@github.com/PlumHQ/k8s-manifests.git
+        cd k8s-manifests
+
+        git checkout -b update-image-$SHORT_SHA
+
+        # Pull the latest changes from the remote before pushing
+        git pull origin main
+
+        sed -i "s|image:.*|image: asia-south1-docker.pkg.dev/plum-vpc-prod/plum-docker-repo/orbit:$SHORT_SHA|g" \
+          orbit/overlays/prd/patch.yaml
+
+        git config user.email "cloudbuild@plumhq.com"
+        git config user.name "Cloud Build Bot"
+        git add orbit/overlays/prd/patch.yaml
+        git commit -m "chore: update image tag to $SHORT_SHA"
+        git push origin update-image-$SHORT_SHA
+
+        sleep 3
+
+        PR_PAYLOAD=$$(jq -nc \
+          --arg title "chore: update image tag to $SHORT_SHA" \
+          --arg head "PlumHQ:update-image-$SHORT_SHA" \
+          --arg base "main" \
+          --arg body "Automated image tag update by Cloud Build ($SHORT_SHA)." \
+          '{title: $title, head: $head, base: $base, body: $body}')
+        PR_RESPONSE=$$(curl -sf -X POST \
+          -H "Authorization: token ${_GITHUB_TOKEN}" \
+          -H "Content-Type: application/json" \
+          -d "$$PR_PAYLOAD" \
+          https://api.github.com/repos/PlumHQ/k8s-manifests/pulls) || {
+            echo "❌ Failed to create PR, response was: $$PR_RESPONSE"
+            exit 1
+          }
+
+        PR_NUMBER=$$(echo "$$PR_RESPONSE" | jq -r .number)
+        if [ "$$PR_NUMBER" = "null" ] || [ -z "$$PR_NUMBER" ]; then
+          echo "❌ PR_NUMBER is null or empty—aborting"
+          exit 1
+        fi
+        echo "Created PR #$$PR_NUMBER"
+
+        MERGE_PAYLOAD=$$(jq -nc \
+          --arg title "Merge PR #$$PR_NUMBER" \
+          --arg method "squash" \
+          '{commit_title: $title, merge_method: $method}')
+        MERGE_RESPONSE=$$(curl -sf -X PUT \
+          -H "Authorization: token ${_GITHUB_TOKEN}" \
+          -H "Content-Type: application/json" \
+          -d "$$MERGE_PAYLOAD" \
+          https://api.github.com/repos/PlumHQ/k8s-manifests/pulls/$$PR_NUMBER/merge) || {
+            echo "❌ Failed to merge PR #$$PR_NUMBER, response was: $$MERGE_RESPONSE"
+            exit 1
+          }
+
+        curl -X DELETE -H "Authorization: token ${_GITHUB_TOKEN}" \
+          https://api.github.com/repos/PlumHQ/k8s-manifests/git/refs/heads/update-image-$SHORT_SHA
