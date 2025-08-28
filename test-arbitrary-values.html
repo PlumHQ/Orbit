@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Arbitrary Values</title>
+    <style>
+        /* Import the compiled CSS with our arbitrary values */
+        @import url('./design-system-test/styles/output.css');
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .test-container {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .content {
+            background: #f3f4f6;
+            padding: 8px;
+            border-radius: 4px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Testing Arbitrary Values</h1>
+    <p>This page tests if arbitrary values like <code>max-h-[480px]</code> and <code>max-h-[90vh]</code> work correctly.</p>
+    
+    <div class="test-container">
+        <h2>Test 1: max-h-[480px]</h2>
+        <div class="max-h-[480px] content">
+            <p><strong>This container should have max-height: 480px</strong></p>
+            <p>Here's some content to fill the space...</p>
+            <div style="height: 600px; background: linear-gradient(to bottom, #fef3c7, #f59e0b);">
+                <p style="padding: 10px;">This content is 600px tall, but the container should be limited to 480px with scrolling.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Test 2: max-h-[90vh]</h2>
+        <div class="max-h-[90vh] content">
+            <p><strong>This container should have max-height: 90vh (90% of viewport height)</strong></p>
+            <p>Here's some content to fill the space...</p>
+            <div style="height: 150vh; background: linear-gradient(to bottom, #dcfce7, #16a34a);">
+                <p style="padding: 10px;">This content is 150vh tall, but the container should be limited to 90vh with scrolling.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Test 3: max-h-[50vh]</h2>
+        <div class="max-h-[50vh] content">
+            <p><strong>This container should have max-height: 50vh (50% of viewport height)</strong></p>
+            <p>Here's some content to fill the space...</p>
+            <div style="height: 80vh; background: linear-gradient(to bottom, #ddd6fe, #7c3aed);">
+                <p style="padding: 10px; color: white;">This content is 80vh tall, but the container should be limited to 50vh with scrolling.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Test 4: h-[90vh]</h2>
+        <div class="h-[90vh] content">
+            <p><strong>This container should have height: 90vh (exactly 90% of viewport height)</strong></p>
+            <p>This container has a fixed height, not max-height.</p>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Test 5: w-[480px]</h2>
+        <div class="w-[480px] content">
+            <p><strong>This container should have width: 480px</strong></p>
+            <p>The width should be exactly 480px regardless of screen size.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Check if the styles are applied correctly
+        window.addEventListener('DOMContentLoaded', function() {
+            const tests = [
+                { selector: '.max-h-\\[480px\\]', property: 'maxHeight', expected: '480px' },
+                { selector: '.max-h-\\[90vh\\]', property: 'maxHeight', expected: '90vh' },
+                { selector: '.max-h-\\[50vh\\]', property: 'maxHeight', expected: '50vh' },
+                { selector: '.h-\\[90vh\\]', property: 'height', expected: '90vh' },
+                { selector: '.w-\\[480px\\]', property: 'width', expected: '480px' }
+            ];
+            
+            tests.forEach(test => {
+                const element = document.querySelector(test.selector);
+                if (element) {
+                    const computedStyle = window.getComputedStyle(element);
+                    const actualValue = computedStyle[test.property];
+                    console.log(`${test.selector}: expected ${test.expected}, got ${actualValue}`);
+                    
+                    if (actualValue === test.expected) {
+                        console.log(`✅ ${test.selector} works correctly`);
+                    } else {
+                        console.log(`❌ ${test.selector} failed - expected ${test.expected}, got ${actualValue}`);
+                    }
+                } else {
+                    console.log(`❌ Element with selector ${test.selector} not found`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

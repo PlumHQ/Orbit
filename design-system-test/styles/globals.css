@@ -2,6 +2,143 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom utility for arbitrary max-height values */
+@layer utilities {
+  /* Arbitrary value pattern support for max-height */
+  .max-h-\[480px\] {
+    max-height: 480px;
+  }
+  
+  .max-h-\[90vh\] {
+    max-height: 90vh;
+  }
+  
+  .max-h-\[50vh\] {
+    max-height: 50vh;
+  }
+  
+  .max-h-\[70vh\] {
+    max-height: 70vh;
+  }
+  
+  .max-h-\[80vh\] {
+    max-height: 80vh;
+  }
+  
+  .max-h-\[95vh\] {
+    max-height: 95vh;
+  }
+  
+  .max-h-\[600px\] {
+    max-height: 600px;
+  }
+  
+  .max-h-\[400px\] {
+    max-height: 400px;
+  }
+  
+  .max-h-\[320px\] {
+    max-height: 320px;
+  }
+  
+  .max-h-\[500px\] {
+    max-height: 500px;
+  }
+  
+  /* Height arbitrary values */
+  .h-\[480px\] {
+    height: 480px;
+  }
+  
+  .h-\[90vh\] {
+    height: 90vh;
+  }
+  
+  .h-\[50vh\] {
+    height: 50vh;
+  }
+  
+  .h-\[70vh\] {
+    height: 70vh;
+  }
+  
+  .h-\[80vh\] {
+    height: 80vh;
+  }
+  
+  /* Width arbitrary values */
+  .w-\[480px\] {
+    width: 480px;
+  }
+  
+  .w-\[90vw\] {
+    width: 90vw;
+  }
+  
+  .w-\[50vw\] {
+    width: 50vw;
+  }
+  
+  .w-\[70vw\] {
+    width: 70vw;
+  }
+  
+  .w-\[80vw\] {
+    width: 80vw;
+  }
+}
+
+/* Custom Smart Animation Classes (from your original design) */
+@layer utilities {
+  /* Figma Smart Animate Utilities */
+  .animate-smart {
+    transition: all 300ms linear;
+  }
+
+  .animate-smart-opacity {
+    transition: opacity 300ms linear;
+  }
+
+  .animate-smart-opacity path,
+  .animate-smart-opacity rect,
+  .animate-smart-opacity circle,
+  .animate-smart-opacity polygon {
+    transition: opacity 300ms linear;
+  }
+
+  /* Staggered opacity animations to prevent overlap */
+  .animate-smart-opacity-delayed {
+    transition: opacity 150ms linear 300ms;
+  }
+
+  .animate-smart-opacity-immediate {
+    transition: opacity 150ms linear;
+  }
+
+  .animate-smart-transform {
+    transition: transform 300ms linear;
+  }
+
+  .animate-smart-colors {
+    transition: background-color 300ms linear, border-color 300ms linear, color 300ms linear, fill 300ms linear, stroke 300ms linear;
+  }
+
+  .animate-smart-colors path,
+  .animate-smart-colors rect,
+  .animate-smart-colors circle,
+  .animate-smart-colors polygon {
+    transition: fill 300ms linear, stroke 300ms linear, opacity 300ms linear;
+  }
+
+  .animate-smart-layout {
+    transition: width 300ms linear, height 300ms linear, padding 300ms linear, margin 300ms linear;
+  }
+
+  .animate-smart-position {
+    transition: top 300ms linear, left 300ms linear, right 300ms linear, bottom 300ms linear;
+  }
+}
+
 :root {
     /* PRIMITIVES - COLORS */
     --color-plumRed-50: #fef3f2ff;

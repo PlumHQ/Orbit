@@ -1,3 +1,6 @@
-import { cn } from "./utilities";
+import { cn } from './utilities';
+
+export * from './utilities';
+export * from './arbitraryValues';
 
 export {cn};
