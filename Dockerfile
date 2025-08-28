@@ -22,8 +22,16 @@ RUN npm run build-storybook
 # Install serve for static file serving
 RUN npm install -g serve
 
-# Expose port 80 for production
+# Create non-root user for security
+RUN groupadd -g 1001 nodejs && \
+    useradd -r -u 1001 -g nodejs nodejs
+
+# Change ownership of the app directory
+RUN chown -R nodejs:nodejs /usr/src/app
+USER nodejs
+
+# Expose port 6006 (standard Storybook port)
 EXPOSE 6006
 
-# Serve the static build (not dev mode)
-CMD ["serve", "-s", "storybook-static", "-l", "80", "--cors"]
+# Serve the static build with CORS on port 6006
+CMD ["serve", "-s", "storybook-static", "-l", "6006", "--cors"]
