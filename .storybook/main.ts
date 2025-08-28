@@ -34,6 +34,29 @@ const config: StorybookConfig = {
       config.base = './';
     }
     
+    // Configure server settings for CORS
+    config.server = config.server || {};
+    config.server.cors = {
+      origin: [
+        'https://orbit.plumhq.com',
+        'https://plumhq.com',
+        'http://localhost:6006',
+        'http://localhost:8080',
+        /localhost:\d+$/
+      ],
+      credentials: true,
+      methods: ['GET', 'POST', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+    };
+    
+    // Additional build optimizations for production
+    if (process.env.NODE_ENV === 'production') {
+      config.build = config.build || {};
+      config.build.target = 'esnext';
+      config.build.minify = 'esbuild';
+      config.build.sourcemap = false;
+    }
+    
     config.resolve.alias = {
       ...config.resolve.alias,
       '@pluminsurance/design-system-test.utilities': new URL('../design-system-test/ui/utilities', import.meta.url).pathname,

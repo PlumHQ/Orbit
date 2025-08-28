@@ -1,0 +1,72 @@
+# Google Cloud Build configuration for Orbit Storybook
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/orbit-storybook:$BUILD_ID'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/orbit-storybook:latest'
+      - '.'
+    id: 'build-image'
+
+  # Push the image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/orbit-storybook:$BUILD_ID'
+    id: 'push-image'
+    waitFor: ['build-image']
+
+  # Push latest tag
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/orbit-storybook:latest'
+    id: 'push-latest'
+    waitFor: ['build-image']
+
+  # Deploy to GKE
+  - name: 'gcr.io/cloud-builders/gke-deploy'
+    args:
+      - 'run'
+      - '--filename=k8s/'
+      - '--image=gcr.io/$PROJECT_ID/orbit-storybook:$BUILD_ID'
+      - '--location=${_GKE_LOCATION}'
+      - '--cluster=${_GKE_CLUSTER}'
+      - '--namespace=${_NAMESPACE}'
+    id: 'deploy-to-gke'
+    waitFor: ['push-image']
+
+  # Verify deployment
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'rollout'
+      - 'status'
+      - 'deployment/orbit-storybook'
+      - '--namespace=${_NAMESPACE}'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=${_GKE_LOCATION}'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
+    id: 'verify-deployment'
+    waitFor: ['deploy-to-gke']
+
+# Substitution variables
+substitutions:
+  _GKE_LOCATION: 'us-central1-a'  # Update with your GKE zone
+  _GKE_CLUSTER: 'your-cluster-name'  # Update with your cluster name
+  _NAMESPACE: 'default'  # Update with your namespace
+
+# Build options
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: 'E2_HIGHCPU_8'
+
+# Build timeout
+timeout: '1200s'
+
+# Images to be pushed to Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/orbit-storybook:$BUILD_ID'
+  - 'gcr.io/$PROJECT_ID/orbit-storybook:latest'
