@@ -31,7 +31,7 @@ const config: StorybookConfig = {
     
     // Configure base path for production deployment
     if (process.env.NODE_ENV === 'production') {
-      config.base = './';
+      config.base = '/';
     }
     
     // Configure server settings for CORS
@@ -48,6 +48,10 @@ const config: StorybookConfig = {
       methods: ['GET', 'POST', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
     };
+    
+    // Configure preview-head for iframe communication
+    config.define = config.define || {};
+    config.define['process.env.STORYBOOK_PREVIEW_URL'] = JSON.stringify(process.env.STORYBOOK_PREVIEW_URL || '/iframe.html');
     
     // Additional build optimizations for production
     if (process.env.NODE_ENV === 'production') {

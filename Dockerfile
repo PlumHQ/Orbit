@@ -19,11 +19,11 @@ RUN npm ci
 # Build Storybook for production
 RUN npm run build-storybook
 
-# Install serve for static file serving
-RUN npm install -g serve
+# Install a simple HTTP server for static files
+RUN npm install -g http-server
 
-# Expose port 6006 for production
+# Expose port 6006 for production  
 EXPOSE 6006
 
 # Serve static build with CORS support
-CMD ["serve", "-s", "storybook-static", "-l", "6006", "--cors"]
+CMD ["http-server", "storybook-static", "-p", "6006", "--cors", "-a", "0.0.0.0"]

@@ -1,0 +1,28 @@
+<script>
+  // Fix iframe communication issues
+  if (typeof window !== 'undefined') {
+    // Ensure postMessage works correctly
+    window.addEventListener('message', function(event) {
+      // Allow communication from same origin
+      if (event.origin === window.location.origin) {
+        return;
+      }
+      // Allow communication from plumhq.com domains
+      if (event.origin.endsWith('plumhq.com')) {
+        return;
+      }
+    });
+    
+    // Set up proper iframe communication
+    if (window.parent !== window) {
+      try {
+        window.parent.postMessage({
+          type: 'iframe-ready',
+          source: 'storybook-preview'
+        }, '*');
+      } catch (e) {
+        console.warn('Could not send iframe-ready message:', e);
+      }
+    }
+  }
+</script>
