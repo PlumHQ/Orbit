@@ -28,6 +28,12 @@ const config: StorybookConfig = {
   viteFinal: async (config) => {
     // Configure Vite to handle your design system paths
     config.resolve = config.resolve || {};
+    
+    // Configure base path for production deployment
+    if (process.env.NODE_ENV === 'production') {
+      config.base = './';
+    }
+    
     config.resolve.alias = {
       ...config.resolve.alias,
       '@pluminsurance/design-system-test.utilities': new URL('../design-system-test/ui/utilities', import.meta.url).pathname,
