@@ -154,6 +154,8 @@ export const DrawerDemoWithFullPage: StoryWithType = {
                     getNextRecord={() => {setCurrentRecord(currentRecord + 1)}}
                     showSearchButton={true}
                     onSearchButtonClick={() => {alert("search button clicked")}}
+                    showDivider1={true}
+                    showDivider2={true}
                 />
             </Drawer>
         )

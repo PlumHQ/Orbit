@@ -80,8 +80,10 @@ function DrawerContent({
     showNotification,
     showSearchButton,
     onSearchButtonClick,
+    showDivider1,
+    showDivider2,
     ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Content> & { type?: DrawerType, title?: string, buttonLabel?: string, sideDrawerStyle: SideDrawerStyle, bodyContent: React.ReactNode, sideDrawerHeading: string, sideDrawerDescription: string, showCloseButton: boolean, currentRecord: number, totalRecords: number, recordType: string, leadingContent: React.ReactNode, trailingContent: React.ReactNode, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, sideDrawerHeadingButtonClick?: () => void, onSideDrawerLinkButtonClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void, showNotification?: boolean, showSearchButton?: boolean, onSearchButtonClick?: () => void }) {
+}: React.ComponentProps<typeof DrawerPrimitive.Content> & { type?: DrawerType, title?: string, buttonLabel?: string, sideDrawerStyle: SideDrawerStyle, bodyContent: React.ReactNode, sideDrawerHeading: string, sideDrawerDescription: string, showCloseButton: boolean, currentRecord: number, totalRecords: number, recordType: string, leadingContent: React.ReactNode, trailingContent: React.ReactNode, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, sideDrawerHeadingButtonClick?: () => void, onSideDrawerLinkButtonClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void, showNotification?: boolean, showSearchButton?: boolean, onSearchButtonClick?: () => void, showDivider1?: boolean, showDivider2?: boolean }) {
     return (
         <DrawerPortal data-slot="drawer-portal">
             <DrawerOverlay />
@@ -100,7 +102,7 @@ function DrawerContent({
                 {...props}
             >
                 {/* <div className="bg-muted mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-full group-data-[vaul-drawer-direction=bottom]/drawer-content:block" /> */}
-                {type === 'full' ? <FullPageDrawerHeader showCloseButton={showCloseButton} currentRecord={currentRecord} totalRecords={totalRecords} recordType={recordType} leadingContent={leadingContent} trailingContent={trailingContent} tertiaryButtonLabel={tertiaryButtonLabel} tertiaryButtonOnClick={tertiaryButtonOnClick} primaryButtonLabel={primaryButtonLabel} primaryButtonOnClick={primaryButtonOnClick} getPreviousRecord={getPreviousRecord} getNextRecord={getNextRecord} showSearchButton={showSearchButton} onSearchButtonClick={onSearchButtonClick} /> :
+                {type === 'full' ? <FullPageDrawerHeader showDivider1={showDivider1} showDivider2={showDivider2} showCloseButton={showCloseButton} currentRecord={currentRecord} totalRecords={totalRecords} recordType={recordType} leadingContent={leadingContent} trailingContent={trailingContent} tertiaryButtonLabel={tertiaryButtonLabel} tertiaryButtonOnClick={tertiaryButtonOnClick} primaryButtonLabel={primaryButtonLabel} primaryButtonOnClick={primaryButtonOnClick} getPreviousRecord={getPreviousRecord} getNextRecord={getNextRecord} showSearchButton={showSearchButton} onSearchButtonClick={onSearchButtonClick} /> :
                     showNotification && <SideDrawerHeader 
                     style={sideDrawerStyle ?? "neutral"} 
                     buttonLabel={buttonLabel ?? "Button"} 
@@ -180,7 +182,7 @@ function SideDrawerHeader({ style, buttonLabel, sideDrawerHeadingButtonClick, ti
     )
 }
 
-function FullPageDrawerHeader({ showCloseButton, leadingContent, trailingContent, currentRecord, totalRecords, recordType, tertiaryButtonLabel, tertiaryButtonOnClick, primaryButtonLabel, primaryButtonOnClick, getPreviousRecord, getNextRecord, showSearchButton, onSearchButtonClick }: { showCloseButton: boolean, leadingContent?: React.ReactNode, trailingContent?: React.ReactNode, currentRecord?: number, totalRecords?: number, recordType?: string, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void, showSearchButton?: boolean, onSearchButtonClick?: () => void }) {
+function FullPageDrawerHeader({ showCloseButton, leadingContent, trailingContent, currentRecord, totalRecords, recordType, tertiaryButtonLabel, tertiaryButtonOnClick, primaryButtonLabel, primaryButtonOnClick, getPreviousRecord, getNextRecord, showSearchButton, onSearchButtonClick,  showDivider1 = true, showDivider2 = true }: { showCloseButton: boolean, leadingContent?: React.ReactNode, trailingContent?: React.ReactNode, currentRecord?: number, totalRecords?: number, recordType?: string, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void, showSearchButton?: boolean, onSearchButtonClick?: () => void, showDivider1?: boolean, showDivider2?: boolean }) {
     return (
         <DrawerHeader className="flex justify-between w-full items-center w-screen py-4 px-12 bg-surface-background-beige-subtle">
             <div className="flex gap-3 w-full justify-between">
@@ -208,13 +210,13 @@ function FullPageDrawerHeader({ showCloseButton, leadingContent, trailingContent
                     />}
                     {currentRecord && totalRecords &&
                         <div className="flex gap-1">
-                            <div className="w-3 rotate-90 ml-6">
+                            {showDivider1 && <div className="w-3 rotate-90 ml-6">
                                 <Divider
                                     dividerStyle="beige"
                                     variant="subtle"
                                     stroke="solid"
                                 />
-                            </div>
+                            </div>}
                             <div className="text-sm text-feedback-text-information-intense py-3 font-primary font-medium text-sm">
                                 {currentRecord} of {totalRecords} {recordType}
                             </div>
@@ -242,11 +244,11 @@ function FullPageDrawerHeader({ showCloseButton, leadingContent, trailingContent
                                 />
                             </div>
                             <div className="w-3 rotate-90 ml-6">
-                                <Divider
+                                {showDivider2 && <Divider
                                     dividerStyle="beige"
                                     variant="subtle"
                                     stroke="solid"
-                                />
+                                />}
                             </div>
                         </div>}
                     <div className="flex gap-15">
