@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './index';
-import { InfoIcon } from '../icons';
+import { HeartIcon, InfoIcon } from '../icons';
 import { useState } from 'react';
 
 const meta: Meta<typeof Tabs> = {
@@ -148,10 +148,10 @@ export const Vertical: Story = {
         className="w-96 h-64"
         verticalTabHeader="Navigation"
       >
-        <TabsList {...args} orientation="vertical">
-          <TabsTrigger value="dashboard" name="Dashboard" />
-          <TabsTrigger value="analytics" name="Analytics" />
-          <TabsTrigger value="reports" name="Reports" />
+        <TabsList {...args} orientation="vertical" showHeaderIcon={true}>
+          <TabsTrigger value="dashboard" name="Dashboard" leadingIcon={HeartIcon} />
+          <TabsTrigger value="analytics" name="Analytics" leadingIcon={HeartIcon} />
+          <TabsTrigger value="reports" name="Reports" leadingIcon={HeartIcon} />
         </TabsList>
         <TabsContent value="dashboard">
           <div className="p-4">

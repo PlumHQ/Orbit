@@ -59,6 +59,7 @@ interface TabsListProps extends React.ComponentProps<typeof TabsPrimitive.List> 
   verticalTabHeader?: string;
   className?: string;
   children?: React.ReactNode;
+  showHeaderIcon?: boolean;
 }
 
 function TabsList({
@@ -69,12 +70,13 @@ function TabsList({
   onValueChange,
   selectedValue,
   verticalTabHeader,
+  showHeaderIcon,
   ...props
 }: TabsListProps) {
   return (
     <div>
     {verticalTabHeader && <div className={`flex items-center justify-start text-interactive-text-${styleVariant}-muted font-primary text-base font-medium mb-2 pr-1`}>
-        <ListTreeIcon size="large" className={`fill-surface-icon-${styleVariant}-muted mr-1`} />
+        {showHeaderIcon && <ListTreeIcon size="large" className={`fill-surface-icon-${styleVariant}-muted mr-1`} />}
         <div>{verticalTabHeader}</div>
         </div>} 
       <TabsPrimitive.List
@@ -82,8 +84,8 @@ function TabsList({
         className={cn(
           `bg-muted text-muted-foreground`,
           orientation === 'vertical'
-            ? `flex flex-col h-fit w-36 items-start justify-start rounded-lg p-[3px] border-l-2 border-interactive-border-${styleVariant}-subtle rounded-0.5`
-            : `inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px] border-b-2 border-interactive-border-${styleVariant}-subtle rounded-0.5`,
+            ? `flex flex-col h-fit w-36 items-start justify-start rounded-lg border-l-2 border-interactive-border-${styleVariant}-subtle rounded-0.5`
+            : `inline-flex h-9 w-fit items-center justify-center rounded-lg  border-b-2 border-interactive-border-${styleVariant}-subtle rounded-0.5`,
           ``,
           verticalTabHeader ? 'ml-2' : '',
           className
@@ -137,14 +139,14 @@ function TabsTrigger({
       <button
         className={`${
           orientation === 'vertical' ? `flex` : `${!isLastTab ? 'mr-4' : ''} pt-1`
-        } focus-visible:plum-focus focus:none mx-05 rounded-2`}
+        } focus-visible:plum-focus focus:none rounded-2`}
         onClick={() => {
           onValueChange?.(value as string);
         }}
       >
         {selectedValue === value && orientation === 'vertical' ? (
           <div
-            className={`w-05 bg-interactive-icon-${styleVariant}-muted  ml-05-negative rounded-0.5`}
+            className={`w-05 bg-interactive-icon-${styleVariant}-muted  ml-1-negative rounded-0.5`}
           ></div>
         ) : (
           ''
