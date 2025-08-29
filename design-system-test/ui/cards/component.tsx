@@ -22,6 +22,7 @@ export const Card = ({
         large: 'p-12 rounded-6',
         medium: 'p-10 rounded-6',
         small: 'p-6 rounded-4',
+        extraSmall: 'p-3 rounded-3',
       },
       cardStyle: {
         primary: 'border-surface-border-beige-subtle',

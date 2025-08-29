@@ -17,7 +17,7 @@ const meta: Meta<typeof Card> = {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['large', 'medium', 'small'],
+      options: ['large', 'medium', 'small', 'extraSmall'],
       description: 'The size of the card',
     },
     cardStyle: {
@@ -67,6 +67,10 @@ export const AllSizes: Story = {
       <Card {...args} size="large" cardStyle={args.cardStyle}>
         <h4 className="font-medium">Large Card</h4>
         <p className="text-sm">Large card content with more padding</p>
+      </Card>
+      <Card {...args} size="extraSmall" cardStyle={args.cardStyle}>
+        <h4 className="font-medium">Extra Small Card</h4>
+        <p className="text-sm">Extra small card content</p>
       </Card>
     </div>
   ),
