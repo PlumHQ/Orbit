@@ -159,7 +159,7 @@ export function Banner({
                 : null
               : leadingAsset && (
                   <div
-                    className={`flex w-14 h-14`}
+                    className={`flex w-16 h-14`}
                   >
                     {React.createElement(leadingAsset)}
                   </div>
@@ -243,7 +243,7 @@ export function Banner({
               </div>
             )}
             {trailingAsset && layout === 'expanded' && (
-              <div className={`flex items-start w-14 h-14`}>
+              <div className={`flex items-start w-16 h-14`}>
                 {React.createElement(trailingAsset)}
               </div>
             )}

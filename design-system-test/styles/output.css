@@ -2187,6 +2187,10 @@ video {
   border-radius: 24px;
 }
 
+.rounded-7 {
+  border-radius: 28px;
+}
+
 .rounded-8 {
   border-radius: 9999px;
 }
