@@ -12,12 +12,13 @@ import { ButtonGroupAlignment, ButtonGroupOrientation, ButtonGroupStyle } from "
 import { Checkbox } from "../checkbox";
 import { IconButton } from "../iconButton";
 import '@fontsource/inter';
+import { TModalSizes } from "./types";
 
 // Context for modal props
 const ModalContext = React.createContext<{
   showHeaderOverFlowGradient?: boolean;
   showFooterOverFlowGradient?: boolean;
-  size?: "small" | "medium" | "large";
+  size?: TModalSizes;
 }>({});
 
 // Hook to use modal context
@@ -75,7 +76,7 @@ function DialogContent({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
-  size?: "small" | "medium" | "large";
+  size?: TModalSizes;
   showHeaderOverFlowGradient?: boolean;
   showFooterOverFlowGradient?: boolean;
 }) {
@@ -116,7 +117,7 @@ function DialogHeader({
   showHeaderOverFlowGradient: propShowHeaderOverFlowGradient,
   centerAlignHeader,
   showBackButton,
-  onBackArrowClick,
+  onBackArrowClick
 }: {
   headerText: string
   anchorAsset?: React.FC
@@ -126,10 +127,10 @@ function DialogHeader({
   showBackButton?: boolean
   onBackArrowClick?: () => void
 }) {
-  const { showHeaderOverFlowGradient: contextShowHeaderOverFlowGradient } = useModalContext();
+  const { showHeaderOverFlowGradient: contextShowHeaderOverFlowGradient, size: contextSize } = useModalContext();
   const showHeaderOverFlowGradient = propShowHeaderOverFlowGradient ?? contextShowHeaderOverFlowGradient;
   return (
-    <div data-slot="dialog-header" className={cn("flex flex-col font-primary text-2xl font-semibold space-y-1.5 text-left pt-8 px-9 flex-shrink-0", showHeaderOverFlowGradient ? "" : "mb-4")}>
+    <div data-slot="dialog-header" className={cn("flex flex-col font-primary text-2xl font-semibold space-y-1.5 text-left pt-8 px-9 flex-shrink-0", showHeaderOverFlowGradient ? "" : contextSize === "large" ? "mb-6" : "mb-4")}>
       {anchorAsset && <div
         className="flex justify-between"
       >
@@ -297,7 +298,7 @@ function DialogBody({
   return (
     <div
       data-slot="dialog-body"
-      className={`font-primary text-base text-surface-text-gray-normal px-9 overflow-scroll flex-1 ${showFooterOverFlowGradient ? "mb-6-negative" : ""} ${showHeaderOverFlowGradient ? "mt-6-negative" : ""}`}
+      className={`font-primary text-base text-surface-text-gray-normal px-9 overflow-scroll flex-1 ${showFooterOverFlowGradient ? "mb-6-negative" : "mb-6"} ${showHeaderOverFlowGradient ? "mt-6-negative" : ""}`}
     >
       <div>{bodyText}</div>
       <div>{bodySlot}</div>
