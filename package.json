@@ -1,19 +1,18 @@
 {
-  "name": "@plumhq/Orbit",
-  "version": "1.0.0",
+  "name": "orbit-design-system",
+  "version": "1.0.1",
   "description": "Plum's comprehensive Orbit system for healthcare applications",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs.js"
     },
     "./styles": {
-      "import": "./dist/styles.css"
+      "import": "./dist/style.css"
     }
   },
   "files": [
@@ -26,8 +25,9 @@
     "url": "https://github.com/PlumHQ/Orbit.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "@plumhq:registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org",
+    "@plumhq:registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "homepage": "https://github.com/PlumHQ/Orbit#readme",
   "bugs": {
@@ -45,7 +45,7 @@
     "plum"
   ],
   "scripts": {
-    "build": "npm run build:css && vite build",
+    "build": "vite build",
     "build:css": "tailwindcss -i ./design-system-test/styles/globals.css -o ./design-system-test/styles/output.css --watch=false",
     "build:types": "tsc --project tsconfig.build.json",
     "dev": "vite",

@@ -41,7 +41,7 @@ export const Button = React.forwardRef<HTMLButtonElement, IButton>(
     ref
   ) => {
     const buttonVariants = cva(
-      `inline-flex items-center font-primary py-2 font-semibold justify-between
+      `inline-flex w-fit items-center font-primary py-2 font-semibold justify-between
       bg-interactive-background-${styleVariant}-${
         disabled || loading
           ? `disabled`
