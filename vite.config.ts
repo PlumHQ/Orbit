@@ -36,7 +36,7 @@ export default defineConfig({
         }
       }
     },
-    sourcemap: false,
+    sourcemap: true,
     emptyOutDir: true
   },
   resolve: {
