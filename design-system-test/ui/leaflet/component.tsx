@@ -56,7 +56,7 @@ export const Leaflet = ({
       onClick={onClick}
       style={width ? { width: `${width}px` } : undefined}
     >
-      <div className={`flex gap-1 justify-between`}>
+      <div className={`flex gap-1 justify-${trailingText || trailingIcon ? 'center' : 'between'}`}>
         <div className={`flex items-center gap-1`}>
           {leadingIcon && React.createElement(leadingIcon, {
             size: size,
@@ -67,7 +67,7 @@ export const Leaflet = ({
         </div>
         <div>{leadingText}</div>
       </div>
-      <div className={`flex gap-1 items-center`}>
+      {trailingText || trailingIcon && <div className={`flex gap-1 items-center`}>
         {trailingText && <div>{trailingText}</div>}
         {trailingIcon && (
           <div>
@@ -79,7 +79,7 @@ export const Leaflet = ({
             })}
           </div>
         )}
-      </div>
+      </div>}
     </div>
   );
 }

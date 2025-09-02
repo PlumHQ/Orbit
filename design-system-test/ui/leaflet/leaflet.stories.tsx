@@ -34,6 +34,11 @@ const meta: Meta<typeof Leaflet> = {
       control: { type: 'text' },
       description: 'The trailing text of the leaflet',
     },
+    trailingIcon: {
+      control: { type: 'select' },
+      options: [RightArrowIcon, InfoIcon],
+      description: 'The trailing icon of the leaflet',
+    },
   },
   args: {
     style: 'information',
