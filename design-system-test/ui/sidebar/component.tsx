@@ -288,7 +288,7 @@ function SidebarTrigger({
 
 
   return (
-    <div className={cn("fixed cursor-pointer ml-3-negative animate-smart-transform","top-50")} onClick={()=>{setIsHovered(false); toggleSidebar()}} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <div className={cn("fixed cursor-pointer animate-smart-transform","top-50")} onClick={()=>{setIsHovered(false); toggleSidebar()}} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <Tooltip>
         <TooltipTrigger asChild>
           {state === "expanded" ?
