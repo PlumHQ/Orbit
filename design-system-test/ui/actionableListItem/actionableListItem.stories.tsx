@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { ActionableListItem } from './index';
-import { InfoIcon } from '../icons';
+import { InfoIcon, RightArrowIcon } from '../icons';
 import { HealthInsuraceIllustration } from '../illustrations';
 
 const meta: Meta<typeof ActionableListItem> = {
@@ -87,6 +87,20 @@ const meta: Meta<typeof ActionableListItem> = {
         onNotificationClick: {
             action: 'notification clicked',
             description: 'Callback fired when notification is clicked',
+        },
+        leafletTrailingIcon: {
+            control: { type: 'select' },
+            options: [InfoIcon, RightArrowIcon],
+            description: 'Trailing icon for leaflet',
+        },
+        leafletLeadingIcon: {
+            control: { type: 'select' },
+            options: [InfoIcon, RightArrowIcon],
+            description: 'Leading icon for leaflet',
+        },
+        showNotification: {
+            control: { type: 'boolean' },
+            description: 'Show notification',
         },
     },
     args: {

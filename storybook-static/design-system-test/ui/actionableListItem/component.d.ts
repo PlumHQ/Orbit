@@ -23,5 +23,6 @@ export interface IActionableListItem {
     onItemClick?: () => void;
     onNotificationClick?: () => void;
     showRightArrowIcon?: boolean;
+    showNotification?: boolean;
 }
-export declare const ActionableListItem: ({ variant, size, behaviour, leadingAsset, primaryText, secondaryTexts, tertiaryText, callToAction, badgeText, badgeSize, badgeVariant, badgeStyle, leafletLeadingIcon, leafletLeadingText, leafletTrailingIcon, leafletTrailingText, leafletStyle, showRightArrowIcon, onNotificationClick, onItemClick, }: IActionableListItem) => import("react/jsx-runtime").JSX.Element;
+export declare const ActionableListItem: ({ variant, size, behaviour, leadingAsset, primaryText, secondaryTexts, tertiaryText, callToAction, badgeText, badgeSize, badgeVariant, badgeStyle, leafletLeadingIcon, leafletLeadingText, leafletTrailingIcon, leafletTrailingText, leafletStyle, showRightArrowIcon, showNotification, onNotificationClick, onItemClick, }: IActionableListItem) => import("react/jsx-runtime").JSX.Element;

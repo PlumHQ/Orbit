@@ -8,10 +8,10 @@ import '@fontsource/inter';
 export interface ILeaflet {
   style: TLeafletStyle;
   size: TLeafletSize;
-  leadingIcon?: React.FC;
+  leadingIcon?: React.FC | null;
   leadingText: string;
-  trailingIcon?: React.FC;
-  trailingText?: string;
+  trailingIcon?: React.FC | null;
+  trailingText?: string | null;
   onClick?: () => void;
   width?: string;
 }
@@ -35,7 +35,7 @@ export const Leaflet = ({
 
   }
   const leafletVariants = cva(
-    `w-1405 cursor-pointer flex items-center justify-between rounded-b font-primary font-medium border border-feedback-border-${style}-subtle bg-interactive-background-${style}-subtle hover:bg-feedback-background-${style}-normal text-feedback-text-${style}-${
+    `w-1405 cursor-pointer flex items-center justify-${trailingText || trailingIcon ? 'between' : 'center'} rounded-b font-primary font-medium border border-feedback-border-${style}-subtle bg-interactive-background-${style}-subtle hover:bg-feedback-background-${style}-normal text-feedback-text-${style}-${
       colorDepthMapping[style][0]
     }`,
     {
@@ -56,10 +56,10 @@ export const Leaflet = ({
       onClick={onClick}
       style={width ? { width: `${width}px` } : undefined}
     >
-      <div className={`flex gap-1 justify-${trailingText || trailingIcon ? 'center' : 'between'}`}>
+      <div className={`flex gap-1 justify-between`}>
         <div className={`flex items-center gap-1`}>
-          {leadingIcon && React.createElement(leadingIcon, {
-            size: size,
+          {leadingIcon && React.createElement(leadingIcon as React.ComponentType<any>, {
+            size: size === 'large' ? 'large' : 'medium',
             className: `fill-feedback-icon-${style}-${
               colorDepthMapping[style][1]
             }`,
@@ -71,8 +71,8 @@ export const Leaflet = ({
         {trailingText && <div>{trailingText}</div>}
         {trailingIcon && (
           <div>
-            {React.createElement(trailingIcon, {
-              size: size,
+            {React.createElement(trailingIcon as React.ComponentType<any>, {
+              size: size === 'large' ? 'large' : 'medium',
               className: `fill-feedback-icon-${style}-${
                 colorDepthMapping[style][1]
               }`,
