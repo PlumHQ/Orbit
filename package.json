@@ -1,6 +1,6 @@
 {
-  "name": "@plumhq/Orbit",
-  "version": "1.0.0",
+  "name": "orbit-design-system",
+  "version": "1.0.9",
   "description": "Plum's comprehensive Orbit system for healthcare applications",
   "license": "MIT",
   "main": "dist/index.cjs.js",
@@ -13,7 +13,7 @@
       "types": "./dist/index.d.ts"
     },
     "./styles": {
-      "import": "./dist/styles.css"
+      "import": "./dist/output.css"
     }
   },
   "files": [
@@ -26,8 +26,9 @@
     "url": "https://github.com/PlumHQ/Orbit.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "@plumhq:registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org",
+    "@plumhq:registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "homepage": "https://github.com/PlumHQ/Orbit#readme",
   "bugs": {
@@ -45,7 +46,8 @@
     "plum"
   ],
   "scripts": {
-    "build": "npm run build:css && vite build",
+    "build": "vite build && npm run postbuild",
+    "postbuild": "mkdir -p dist && cp ./design-system-test/styles/output.css ./dist/output.css",
     "build:css": "tailwindcss -i ./design-system-test/styles/globals.css -o ./design-system-test/styles/output.css --watch=false",
     "build:types": "tsc --project tsconfig.build.json",
     "dev": "vite",
@@ -93,13 +95,16 @@
     "@typescript-eslint/parser": "^8.40.0",
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.21",
+    "babel-plugin-react-remove-properties": "^0.3.0",
     "eslint": "^9.33.0",
     "glob": "^11.0.3",
     "postcss": "^8.5.6",
     "storybook": "^8.6.14",
     "tailwindcss": "^3.4.17",
+    "terser": "^5.43.1",
     "typescript": "^5.9.2",
     "vite": "^5.4.19",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4"
   }
 }

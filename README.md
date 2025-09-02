@@ -1,10 +1,10 @@
-# Plum Design System
+# Orbit Design System
 
-A comprehensive design system for Plum's healthcare platform, built with React, TypeScript, and Tailwind CSS.
+A comprehensive design system package for building healthcare applications, built with React, TypeScript, and Tailwind CSS.
 
 ## Overview
 
-The Plum Design System provides a consistent set of UI components, styles, and patterns to create cohesive user experiences across Plum's healthcare applications. Built with modern web technologies and best practices, it ensures accessibility, scalability, and maintainability.
+The Orbit Design System provides a consistent set of UI components, styles, and patterns to create cohesive user experiences across healthcare applications. Built with modern web technologies and best practices, it ensures accessibility, scalability, and maintainability.
 
 ## 🚀 Features
 
@@ -52,21 +52,19 @@ The Plum Design System provides a consistent set of UI components, styles, and p
 ## 🛠 Installation
 
 ```bash
-npm install @pluminsurance/design-system-test
+npm install orbit-design-system
 ```
 
 ## 🎯 Usage
 
 ```jsx
-import { Button, Modal, Sidebar } from '@pluminsurance/design-system-test'
-import '@pluminsurance/design-system-test.styles'
+import { Button, Modal, Sidebar } from 'orbit-design-system'
+import 'orbit-design-system/styles'
 
 function App() {
   return (
     <div>
-      <Button variant="primary" size="medium">
-        Get Started
-      </Button>
+      <Button variant="primary" styleVariant="primary" size="large" label="Large" />
     </div>
   )
 }
@@ -74,7 +72,7 @@ function App() {
 
 ## 📚 Documentation
 
-Visit our [Storybook documentation](./storybook-static/index.html) to explore all components interactively with examples and API documentation.
+Visit our [Storybook documentation](https://orbit.plumhq.com) to explore all components interactively with examples and API documentation.
 
 ## 🏗 Development
 
@@ -85,7 +83,7 @@ Visit our [Storybook documentation](./storybook-static/index.html) to explore al
 ### Setup
 ```bash
 # Clone the repository
-git clone https://github.com/AdityaPlum/design-system.git
+git clone <repository-url>
 cd design-system-test
 
 # Install dependencies
@@ -97,16 +95,15 @@ npm run storybook
 # Build the design system
 npm run build
 
-# Run tests
+# Run tests (if available)
 npm run test
 ```
 
 ### Available Scripts
 - `npm run storybook` - Start Storybook development server
 - `npm run build-storybook` - Build Storybook for production
-- `npm run build` - Build all components
-- `npm run lint` - Run ESLint
-- `npm run test` - Run unit tests
+- `npm run build` - Build the design system package
+- `npm run build:css` - Build Tailwind CSS styles
 
 ## 📁 Project Structure
 
@@ -145,7 +142,7 @@ All components are built with accessibility in mind:
 
 ## 🤝 Contributing
 
-We welcome contributions to the Plum Design System! Please see our [ARCHITECTURE_README.md](./ARCHITECTURE_README.md) for detailed guidelines.
+We welcome contributions to the Orbit Design System! Please see our [ARCHITECTURE_README.md](./ARCHITECTURE_README.md) for detailed guidelines.
 
 ### Development Workflow
 1. Fork the repository
@@ -160,10 +157,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Links
 
+- [Package on npm](https://www.npmjs.com/package/orbit-design-system)
+- [Storybook Documentation](https://orbit.plumhq.com)
 - [PlumHQ Website](https://plumhq.com)
-- [GitHub Organization](https://github.com/PlumHQ)
-- [Contact](mailto:contact@plumhq.com)
 
 ---
 
-Built with ❤️ by the Plum team in Bangalore, India.
+Built with ❤️ by the Plum team for the healthcare community.

@@ -1,4 +1,4 @@
-// CSS imports for bundling
+// CSS imports - import CSS variables and compiled styles
 import './globals.css';
 import './output.css';
 

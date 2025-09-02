@@ -1,10 +1,35 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./design-system-test/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./storybook-static/**/*.{js,ts,jsx,tsx}"
+    "./design-system-test/ui/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}"
   ],
+  // Enable CSS optimization
+  corePlugins: {
+    // Disable unused core plugins to reduce CSS size
+    preflight: true,
+    container: false,
+    accessibility: true,
+    pointerEvents: true,
+    visibility: true,
+    position: true,
+    inset: true,
+    isolation: false,
+    zIndex: true,
+    order: true,
+    gridColumn: true,
+    gridColumnStart: true,
+    gridColumnEnd: true,
+    gridRow: true,
+    gridRowStart: true,
+    gridRowEnd: true,
+    float: false,
+    clear: false,
+    objectFit: true,
+    objectPosition: true,
+    overflow: true,
+    overscrollBehavior: false
+  },
   theme: {
     extend: {
       colors: {
