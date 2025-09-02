@@ -139,7 +139,7 @@ function TabsTrigger({
       <button
         className={`${
           orientation === 'vertical' ? `flex` : `${!isLastTab ? 'mr-4' : ''} pt-1`
-        } focus-visible:plum-focus focus:none rounded-2`}
+        } focus-visible:plum-focus focus:none rounded-2 font-semibold`}
         onClick={() => {
           onValueChange?.(value as string);
         }}
@@ -152,7 +152,7 @@ function TabsTrigger({
           ''
         )}
         <div
-          className={cn(`flex items-center font-primary text-base font-primary text-interactive-text-${styleVariant}-muted 
+          className={cn(`flex items-center font-primary text-base font-primary text-interactive-text-${styleVariant}-${selectedValue === value ? 'normal' : 'muted'} 
         hover:text-interactive-text-${styleVariant}-subtle 
         focus-visible:plum-focus ${
           orientation === 'vertical'
