@@ -1,6 +1,6 @@
 {
   "name": "orbit-design-system",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Plum's comprehensive Orbit system for healthcare applications",
   "license": "MIT",
   "main": "dist/index.cjs.js",
