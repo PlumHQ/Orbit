@@ -3,10 +3,10 @@ import { TLeafletSize, TLeafletStyle } from './types';
 export interface ILeaflet {
     style: TLeafletStyle;
     size: TLeafletSize;
-    leadingIcon?: React.FC;
+    leadingIcon?: React.FC | null;
     leadingText: string;
-    trailingIcon?: React.FC;
-    trailingText?: string;
+    trailingIcon?: React.FC | null;
+    trailingText?: string | null;
     onClick?: () => void;
     width?: string;
 }
