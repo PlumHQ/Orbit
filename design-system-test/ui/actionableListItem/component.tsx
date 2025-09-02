@@ -67,7 +67,7 @@ export const ActionableListItem = ({
   leafletTrailingText = '',
   leafletStyle = 'positive',
   showRightArrowIcon = true,
-  showNotification = true,
+  showNotification = false,
   onNotificationClick = () => { },
   onItemClick = () => { },
 }: IActionableListItem) => {
