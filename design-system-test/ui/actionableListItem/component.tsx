@@ -45,6 +45,7 @@ export interface IActionableListItem {
   onItemClick?: () => void;
   onNotificationClick?: () => void;
   showRightArrowIcon?: boolean;
+  showNotification?: boolean;
 }
 
 export const ActionableListItem = ({
@@ -66,6 +67,7 @@ export const ActionableListItem = ({
   leafletTrailingText = '',
   leafletStyle = 'positive',
   showRightArrowIcon = true,
+  showNotification = true,
   onNotificationClick = () => { },
   onItemClick = () => { },
 }: IActionableListItem) => {
@@ -179,7 +181,7 @@ export const ActionableListItem = ({
           )}
         </div>
       </div>
-      {variant === 'primary' && (
+      {variant === 'primary' && showNotification && (
         <div className={`mt-negative-${size === 'large' ? 6 : 35}`}>
           <Leaflet
             size={size}
