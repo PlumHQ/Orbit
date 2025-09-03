@@ -137,7 +137,7 @@ function DrawerContent({
                             <div className="w-full h-10 relative mt-6-negative">
                                 <div className="w-full bg-gradient-to-t h-10 absolute top-0 left-0" />
                             </div>
-                        </div></> : <div className="overflow-scroll h-full">
+                        </div></> : <div className="overflow-scroll h-full max-w-[1120px] m-auto">
                         {bodyContent}
                     </div>}
 

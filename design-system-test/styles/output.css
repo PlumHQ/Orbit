@@ -1094,6 +1094,10 @@ video {
   clear: none;
 }
 
+.m-auto {
+  margin: auto;
+}
+
 .m-1 {
   margin: 4px;
 }
@@ -5286,6 +5290,10 @@ video {
 
 .max-w-\[95vw\] {
   max-width: 95vw;
+}
+
+.max-w-\[1120px\] {
+  max-width: 1120px;
 }
 
 /* Height arbitrary values */
