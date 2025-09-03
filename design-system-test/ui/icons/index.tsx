@@ -48,6 +48,9 @@ import SettingsIcon from './settingsIcon';
 import ChevronUp from './ChevronUp';
 import EllipsisVerticalIcon from './ellipsisVertical';
 import LogoutIcon from './logoutIcon';
+import SquareArrowOutUpRightIcon from './squareArrowOutUpRightIcon';
+import CircleCheckedIcon from './CircleCheckedIcon';
+import CircleDashedIcon from './circleDashedIcon';
 
 export type IIconProps = {
   color?: string;
@@ -107,4 +110,7 @@ export {
   ChevronUp,
   EllipsisVerticalIcon,
   LogoutIcon,
+  SquareArrowOutUpRightIcon,
+  CircleCheckedIcon,
+  CircleDashedIcon,
 };
