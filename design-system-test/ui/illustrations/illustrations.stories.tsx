@@ -6,6 +6,9 @@ import {
   PersonalAccidentIllustration,
   ExpandedSidedLogo,
   CollapsedSidedLogo,
+  ScanIllustration,
+  TelehealthFreeIllustration,
+  FamilyCareIllustration,
 } from './index';
 
 const meta: Meta = {
@@ -285,6 +288,24 @@ export const UsageExamples: Story = {
           <WalletIllustration />
           <h4 className="font-medium mt-2">Financial Security</h4>
         </div>
+      </div>
+
+      {/* Telehealth Free Example */}
+      <div className="text-center p-4 border rounded-lg">
+        <TelehealthFreeIllustration />
+        <h4 className="font-medium mt-2">Telehealth Free</h4>
+      </div>
+
+      {/* Scan Example */}
+      <div className="text-center p-4 border rounded-lg">
+        <ScanIllustration />
+        <h4 className="font-medium mt-2">Scan</h4>
+      </div>
+
+      {/* Family Care Example */}
+      <div className="text-center p-4 border rounded-lg">
+        <FamilyCareIllustration />
+        <h4 className="font-medium mt-2">Family Care</h4>
       </div>
     </div>
   ),
