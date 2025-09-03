@@ -4253,6 +4253,10 @@ video {
   font-family: var(--font-family-primary), Inter;
 }
 
+.font-secondary {
+  font-family: var(--font-family-secondary), Chromatica;
+}
+
 .text-base {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);

@@ -50,7 +50,7 @@ export function Banner({
   const bannerVariants = cva(
     `font-primary text-feedback-text-${
       styleVariant === 'notice' ? 'information-intense' : 'neutral-normal'
-    }  border border-feedback-border-${styleVariant}-normal`,
+    }  border border-feedback-border-${styleVariant}-normal w-full`,
     {
       variants: {
         styleVariant: {
