@@ -128,7 +128,7 @@ function DrawerContent({
                                 </div>
                             </div>}
                     </div>
-                    <div className="w-full h-1 mb-4"><Divider dividerStyle="gray" variant="normal" stroke="solid" /></div>
+                    {type === 'side' && <div className="w-full h-1 mb-4"><Divider dividerStyle="gray" variant="normal" stroke="solid" /></div>}
                     <div className="w-full h-10 relative">
                         <div className="w-full bg-gradient-to-b h-10 absolute top-0 left-0" />
                     </div>
@@ -184,7 +184,7 @@ function SideDrawerHeader({ style, buttonLabel, sideDrawerHeadingButtonClick, ti
 
 function FullPageDrawerHeader({ showCloseButton, leadingContent, trailingContent, currentRecord, totalRecords, recordType, tertiaryButtonLabel, tertiaryButtonOnClick, primaryButtonLabel, primaryButtonOnClick, getPreviousRecord, getNextRecord, showSearchButton, onSearchButtonClick,  showDivider1 = true, showDivider2 = true }: { showCloseButton: boolean, leadingContent?: React.ReactNode, trailingContent?: React.ReactNode, currentRecord?: number, totalRecords?: number, recordType?: string, tertiaryButtonLabel?: string, tertiaryButtonOnClick?: () => void, primaryButtonLabel?: string, primaryButtonOnClick?: () => void, getPreviousRecord?: () => void, getNextRecord?: () => void, showSearchButton?: boolean, onSearchButtonClick?: () => void, showDivider1?: boolean, showDivider2?: boolean }) {
     return (
-        <DrawerHeader className="flex justify-between w-full items-center w-screen py-4 px-12 bg-surface-background-beige-subtle">
+        <DrawerHeader className="flex justify-between w-full items-center w-screen py-4 px-12 bg-surface-background-beige-subtle border-b border-surface-border-beige-subtle">
             <div className="flex gap-3 w-full justify-between">
                 <div className="flex gap-3 h-full">
                     {showCloseButton && <DrawerClose asChild><Button

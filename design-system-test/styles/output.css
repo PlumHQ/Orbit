@@ -4263,6 +4263,11 @@ video {
   line-height: var(--line-height-2xl);
 }
 
+.text-3xl {
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-3xl);
+}
+
 .text-base {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
