@@ -67,6 +67,10 @@ const meta: Meta<typeof Banner> = {
       control: { type: 'text' },
       description: 'The text of the leading button',
     },
+    showCloseButton: {
+      control: { type: 'boolean' },
+      description: 'Show close button',
+    },
   },
   args: {
     styleVariant: 'neutral',
@@ -92,6 +96,7 @@ export const Default: Story = {
       console.log('Button clicked');
     },
     leadingAsset: HealthInsuraceIllustration,
+    showCloseButton: true,
   },
 };
 

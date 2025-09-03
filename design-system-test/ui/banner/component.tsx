@@ -30,6 +30,7 @@ export interface IBanner {
   trailingButtonText?: string;
   onButtonClick?: () => void;
   onBannerClose?: () => void;
+  showCloseButton?: boolean;
 }
 
 export function Banner({
@@ -46,6 +47,7 @@ export function Banner({
   trailingAsset,
   onButtonClick,
   onBannerClose,
+  showCloseButton = true,
 }: IBanner) {
   const bannerVariants = cva(
     `font-primary text-feedback-text-${
@@ -279,12 +281,12 @@ export function Banner({
               </div>
             ) : (
               <div className={`flex h-fit items-${layout==="compact" ? 'center' : 'start'}`}>
-                <IconButton
+                {showCloseButton && <IconButton
                   size={'large'}
                   icon={CrossCloseIcon}
                   color={variantUtilityMap[styleVariant][2] as IIconButtonColors}
                   {...(onBannerClose && { onClick: onBannerClose })}
-                />
+                />}
               </div>
             )}
           </div>
