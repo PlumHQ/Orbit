@@ -14,5 +14,6 @@ export interface IBanner {
     trailingButtonText?: string;
     onButtonClick?: () => void;
     onBannerClose?: () => void;
+    showCloseButton?: boolean;
 }
-export declare function Banner({ styleVariant, layout, badgeText, leadingAsset, title, body, leadingButtonText, buttonTrailingIcon, buttonLeadingIcon, trailingButtonText, trailingAsset, onButtonClick, onBannerClose, }: IBanner): import("react/jsx-runtime").JSX.Element;
+export declare function Banner({ styleVariant, layout, badgeText, leadingAsset, title, body, leadingButtonText, buttonTrailingIcon, buttonLeadingIcon, trailingButtonText, trailingAsset, onButtonClick, onBannerClose, showCloseButton, }: IBanner): import("react/jsx-runtime").JSX.Element;
