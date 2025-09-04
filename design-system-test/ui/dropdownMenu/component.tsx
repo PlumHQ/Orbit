@@ -102,7 +102,7 @@ function DropdownMenuItem({
         className
       )}
       onClick={onClick}
-      disabled
+      disabled={disabled}
     >
       <div
         className={`py-2 px-15 flex w-full items-center justify-between text-interactive-text-${variant === "destructive" ? 'destructive' : 'gray'}-${disabled ? 'disabled' : 'normal'} font-medium text-sm font-primary`}
@@ -255,10 +255,9 @@ function DropdownMenuRadioItem({
       name={name}
       trailingIcon={trailingIcon}
       trailingText={trailingText}
-      onClick={(event) => {
+      onClick={() => {
         if (onSelectionChange) {
           onSelectionChange(value);
-          event.preventDefault();
         }
       }}
       disabled={disabled}

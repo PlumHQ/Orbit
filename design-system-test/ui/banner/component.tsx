@@ -173,7 +173,7 @@ export function Banner({
                 className={`${
                   layout === 'expanded'
                     ? `text-lg font-semibold mb-05`
-                    : `text-base font-medium`
+                    : `text-base font-medium w-fit`
                 }`}
               >
                 {title}
