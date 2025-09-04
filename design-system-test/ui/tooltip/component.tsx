@@ -87,7 +87,7 @@ function TooltipContent({
           data-slot="tooltip-content"
           sideOffset={8}
           className={cn(
-            'bg-popup-background-normal max-w-260 px-5 py-4 text-popup-text-intense rounded-4 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) font-primary ',
+            'bg-popup-background-normal z-max max-w-260 px-5 py-4 text-popup-text-intense rounded-4 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) font-primary ',
             className
           )}
           side={position}
